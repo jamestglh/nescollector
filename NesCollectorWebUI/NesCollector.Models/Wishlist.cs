@@ -7,9 +7,13 @@ namespace NesCollector.Models
     public class Wishlist
     {
         public int Id { get; set; }
+        public string Title { get; set; }
+        public string Genre { get; set; }
+        public string SystemId { get; set; }
+        public double MaxPrice { get; set; }
 
         public int UserId { get; set; }
-        public int WishlistGameId { get; set; }
+        public int GameId { get; set; }
 
 
     }
