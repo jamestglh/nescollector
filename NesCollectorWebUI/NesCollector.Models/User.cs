@@ -12,5 +12,10 @@ namespace NesCollector.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        //navigation collections
+        public IEnumerable<UserGame> UserGames { get; set; }
+        public IEnumerable<Wishlist> Wishlist { get; set; }
+
+
     }
 }

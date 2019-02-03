@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NesCollector.Data.Context;
 
 namespace NesCollectorWebUI
 {
@@ -31,7 +33,11 @@ namespace NesCollectorWebUI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //bad way of adding connection string
+            //TODO: fix this later somehow!
+            var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=nescollector;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+            services.AddDbContext<NesCollectorDBContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NesCollectorWebUI", "NesCollectorWebUI\NesCollectorWebUI.csproj", "{30B84317-2B0F-45E3-857A-AAE71B2ED276}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NesCollectorWebUI", "NesCollectorWebUI\NesCollectorWebUI.csproj", "{30B84317-2B0F-45E3-857A-AAE71B2ED276}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NesCollector.Models", "NesCollector.Models\NesCollector.Models.csproj", "{3E9AEB89-6720-4C16-9476-06F8B9408A50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NesCollector.Models", "NesCollector.Models\NesCollector.Models.csproj", "{3E9AEB89-6720-4C16-9476-06F8B9408A50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NesCollector.Data", "NesCollector.Data\NesCollector.Data.csproj", "{B11E844F-6132-4D99-BF3D-36B5DBC28A07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3E9AEB89-6720-4C16-9476-06F8B9408A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E9AEB89-6720-4C16-9476-06F8B9408A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E9AEB89-6720-4C16-9476-06F8B9408A50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B11E844F-6132-4D99-BF3D-36B5DBC28A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B11E844F-6132-4D99-BF3D-36B5DBC28A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B11E844F-6132-4D99-BF3D-36B5DBC28A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B11E844F-6132-4D99-BF3D-36B5DBC28A07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

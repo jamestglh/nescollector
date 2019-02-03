@@ -16,8 +16,11 @@ namespace NesCollector.Models
         public bool IsCIB { get; set; }
         public double Value { get; set; }
 
+        //foreign keys
         public int UserId { get; set; }
+        public User User { get; set; } //navigation reference
         public int GameId { get; set; }
+        public Game Game { get; set; } //navigation reference
 
 
     }
