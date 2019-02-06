@@ -32,12 +32,6 @@ namespace NesCollectorWebUI
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-            //bad way of adding connection string
-            //TODO: fix this later somehow!
-            var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=nescollector;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-            services.AddDbContext<NesCollectorDBContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
