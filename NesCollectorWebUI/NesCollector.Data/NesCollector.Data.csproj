@@ -5,6 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190203164859_initial.cs" />
+    <Compile Remove="Migrations\20190205191324_testing-seeding.cs" />
+    <Compile Remove="Migrations\20190205193102_testing-stuff.cs" />
+    <Compile Remove="Migrations\20190205223456_testing-seeding-again.cs" />
+    <Compile Remove="Migrations\20190206195142_testin-a-new-ide.cs" />
+    <Compile Remove="Migrations\20190206202347_continuig-to-tet-new-things.cs" />
+    <Compile Remove="Migrations\20190207002849_testing-some-more.cs" />
+    <Compile Remove="Migrations\20190207003727_initial.cs" />
+    <Compile Remove="Migrations\20190207010811_init.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="SeedData\nesmasterlist.csv" />
   </ItemGroup>
 

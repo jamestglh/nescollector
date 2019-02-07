@@ -49,12 +49,12 @@ namespace NesCollector.Data.Context
                     var genre = csv.GetField<string>("Genre");
                     var coverUrl = csv.GetField<string>("CoverURL");
 
-                    
-                     
+
+
 
                     modelBuilder.Entity<Game>().HasData(
-                    new Game {  Id = id, ApiGameId = apiGameId, SystemId = systemId, Title = title, Genre = genre });
-                    
+                    new Game { Id = id, ApiGameId = apiGameId, SystemId = systemId, Title = title, Genre = genre });
+
                 }
             }
         }

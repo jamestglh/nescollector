@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NesCollector.Data.Interfaces
 {
-    public interface IUserDataService
+    public interface IUserRepository
     {
         //Read
         User GetByID(int userId);

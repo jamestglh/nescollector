@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NesCollector.Data.Interfaces
 {
-    interface IWishlistDataService
+    interface IWishlistRepository
     {
         //Read
         Wishlist GetByID(int userGameId);

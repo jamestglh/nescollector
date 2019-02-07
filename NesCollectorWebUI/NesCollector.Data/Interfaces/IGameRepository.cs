@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NesCollector.Data.Interfaces
 {
-    public interface IGameDataService
+    public interface IGameRepository
     {
         //Read
         Game GetByID(int gameId);

@@ -9,8 +9,8 @@ using NesCollector.Data.Context;
 namespace NesCollector.Data.Migrations
 {
     [DbContext(typeof(NesCollectorDBContext))]
-    [Migration("20190205223456_testing-seeding-again")]
-    partial class testingseedingagain
+    [Migration("20190207011205_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
