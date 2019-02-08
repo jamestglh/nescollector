@@ -12,7 +12,6 @@ namespace NesCollector.Data.Interfaces
         ICollection<User> GetUsersByUserGameId(int userGameId);
         ICollection<User> GetUsersByWishlistId(int userWishlistId);
 
-
         //Create 
         User Create(User newUser);
 

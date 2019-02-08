@@ -8,16 +8,16 @@ namespace NesCollector.Data.Interfaces
     interface IWishlistRepository
     {
         //Read
-        Wishlist GetByID(int userGameId);
+        Wishlist GetByID(int wishlistId);
         ICollection<Wishlist> GetWishlistGamesByUserId(int userId);
         ICollection<Wishlist> GetWishlistGamesByGameId(int gameId);
 
 
         //Create 
-        Wishlist Create(Wishlist newUserGame);
+        Wishlist Create(Wishlist newWishlist);
 
         //Update
-        Wishlist Update(Wishlist updatedUserGame);
+        Wishlist Update(Wishlist updatedWishlist);
 
         //Delete
         bool DeleteById(int wishlistId);

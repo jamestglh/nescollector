@@ -14,8 +14,8 @@ namespace NesCollector.Models
 
         //navigation collections
         public IEnumerable<UserGame> UserGames { get; set; }
-        public IEnumerable<Wishlist> Wishlist { get; set; }
+        public IEnumerable<Wishlist> Wishlists { get; set; }
 
 
     }
-}
+} 

@@ -14,6 +14,7 @@
     <Compile Remove="Migrations\20190207002849_testing-some-more.cs" />
     <Compile Remove="Migrations\20190207003727_initial.cs" />
     <Compile Remove="Migrations\20190207010811_init.cs" />
+    <Compile Remove="Migrations\20190207011205_init.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +37,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NesCollector.Models\NesCollector.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Implementation\EFCore\" />
   </ItemGroup>
 
 </Project>

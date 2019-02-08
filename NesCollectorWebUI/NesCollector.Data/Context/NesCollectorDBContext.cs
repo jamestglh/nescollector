@@ -33,7 +33,7 @@ namespace NesCollector.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
              
-            using (var reader = new StreamReader("..\\NesCollector.Data\\SeedData\\nesmasterlist.csv"))
+            using (var reader = new StreamReader(@"..\NesCollector.Data\SeedData\nesmasterlist.csv"))
             using (var csv = new CsvReader(reader))
 
 
@@ -49,11 +49,8 @@ namespace NesCollector.Data.Context
                     var genre = csv.GetField<string>("Genre");
                     var coverUrl = csv.GetField<string>("CoverURL");
 
-
-
-
                     modelBuilder.Entity<Game>().HasData(
-                    new Game { Id = id, ApiGameId = apiGameId, SystemId = systemId, Title = title, Genre = genre });
+                    new Game { Id = int.Parse(id), ApiGameId = int.Parse(apiGameId), SystemId = systemId, Title = title, Genre = genre });
 
                 }
             }
