@@ -39,8 +39,4 @@
     <ProjectReference Include="..\NesCollector.Models\NesCollector.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Implementation\EFCore\" />
-  </ItemGroup>
-
 </Project>

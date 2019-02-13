@@ -11,6 +11,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NesCollector.Data.Context;
+using NesCollector.Data.Implementation.EFCore;
+using NesCollector.Data.Implementation.Mock;
+using NesCollector.Data.Interfaces;
+using NesCollector.Service.Services;
 
 namespace NesCollectorWebUI
 {
@@ -32,6 +36,23 @@ namespace NesCollectorWebUI
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            //repository layer  injection
+            //services.AddScoped<IGameRepository, MockGameRepository>();
+            //services.AddScoped<IUserGameRepository, MockUserGameRepository>();
+            //services.AddScoped<IUserRepository, MockUserRepository>();
+            //services.AddScoped<IWishlistRepository, MockWishlistRepository>();
+            services.AddScoped<IGameRepository, EFCoreGameRepository>();
+            services.AddScoped<IUserGameRepository, EFCoreUserGameRepository>();
+            services.AddScoped<IUserRepository, EFCoreUserRepository>();
+            services.AddScoped<IWishlistRepository, EFCoreWishlistRepository>();
+
+            //services layer injection
+            services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IUserGameService, UserGameService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IWishlistService, WishlistService>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

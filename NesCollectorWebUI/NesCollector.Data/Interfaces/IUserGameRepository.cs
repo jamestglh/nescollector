@@ -8,7 +8,7 @@ namespace NesCollector.Data.Interfaces
     public interface IUserGameRepository
     {
         //Read
-        UserGame GetByID(int userGameId);
+        UserGame GetById(int userGameId);
         ICollection<UserGame> GetUserGamesByUserId(int userId);
         ICollection<UserGame> GetUserGamesByGameId(int gameId);
 

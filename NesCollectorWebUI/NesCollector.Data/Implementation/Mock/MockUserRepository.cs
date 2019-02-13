@@ -7,7 +7,7 @@ using NesCollector.Models;
 
 namespace NesCollector.Data.Implementation.Mock
 {
-    class MockUserRepository : IUserRepository
+    public class MockUserRepository : IUserRepository
     {
         private List<User> Users = new List<User>();
         public User Create(User newUser)
@@ -19,12 +19,12 @@ namespace NesCollector.Data.Implementation.Mock
 
         public bool DeleteById(int userId)
         {
-            var userToDelete = GetByID(userId);
+            var userToDelete = GetById(userId);
             Users.Remove(userToDelete);
             return true;
         }
 
-        public User GetByID(int userId)
+        public User GetById(int userId)
         {
             return Users.Single(u => u.Id == userId);
         }
@@ -46,14 +46,14 @@ namespace NesCollector.Data.Implementation.Mock
             return results;
         }
 
-        public ICollection<User> GetUsersByWishlistId(int userWishlistId) // returns a list of users that wishlists a particular game
+        public ICollection<User> GetUsersByWishlistId(int wishlistId) // returns a list of users that wishlists a particular game
         {
             var results = new List<User>();
             foreach (User user in Users)
             {
                 foreach (Wishlist wishlist in user.Wishlists)
                 {
-                    if (wishlist.Id == userWishlistId)
+                    if (wishlist.Id == wishlistId)
                     {
                         results.Add(user);
                     }

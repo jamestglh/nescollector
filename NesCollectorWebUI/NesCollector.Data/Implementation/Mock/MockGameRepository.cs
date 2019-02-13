@@ -9,7 +9,12 @@ namespace NesCollector.Data.Implementation.Mock
 {
     public class MockGameRepository : IGameRepository
     {
-        private List<Game> Games = new List<Game>();
+        private List<Game> Games = new List<Game>()
+        {
+            new Game { Id = 1, Title = "A Game that Totally Exists", Genre = "Not an Imaginary Game" }
+        };
+
+        
 
         public Game Create(Game newGame)
         {
@@ -29,12 +34,12 @@ namespace NesCollector.Data.Implementation.Mock
 
         public bool DeleteById(int gameId)
         {
-            var gameToDelete = GetByID(gameId);
+            var gameToDelete = GetById(gameId);
             Games.Remove(gameToDelete);
             return true;
         }
 
-        public Game GetByID(int gameId)
+        public Game GetById(int gameId)
         {
             return Games.Single(l => l.Id == gameId); 
         }

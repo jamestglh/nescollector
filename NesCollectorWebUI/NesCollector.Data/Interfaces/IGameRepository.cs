@@ -8,7 +8,7 @@ namespace NesCollector.Data.Interfaces
     public interface IGameRepository
     {
         //Read
-        Game GetByID(int gameId);
+        Game GetById(int gameId);
 
         //Create 
         Game Create(Game newGame);

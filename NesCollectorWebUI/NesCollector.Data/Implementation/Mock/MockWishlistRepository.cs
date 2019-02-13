@@ -7,7 +7,7 @@ using NesCollector.Models;
 
 namespace NesCollector.Data.Implementation.Mock
 {
-    class MockWishlistRepository : IWishlistRepository
+    public class MockWishlistRepository : IWishlistRepository
 
     {
         private List<Wishlist> Wishlists = new List<Wishlist>();
@@ -20,12 +20,12 @@ namespace NesCollector.Data.Implementation.Mock
 
         public bool DeleteById(int wishlistId)
         {
-            var wishlistToDelete = GetByID(wishlistId);
+            var wishlistToDelete = GetById(wishlistId);
             Wishlists.Remove(wishlistToDelete);
             return true;
         }
 
-        public Wishlist GetByID(int wishlistId)
+        public Wishlist GetById(int wishlistId)
         {
             return Wishlists.Single(w => w.Id == wishlistId);
         }

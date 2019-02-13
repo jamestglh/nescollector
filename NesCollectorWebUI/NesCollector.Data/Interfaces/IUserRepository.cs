@@ -8,9 +8,9 @@ namespace NesCollector.Data.Interfaces
     public interface IUserRepository
     {
         //Read
-        User GetByID(int userId);
+        User GetById(int userId);
         ICollection<User> GetUsersByUserGameId(int userGameId);
-        ICollection<User> GetUsersByWishlistId(int userWishlistId);
+        ICollection<User> GetUsersByWishlistId(int wishlistId);
 
         //Create 
         User Create(User newUser);

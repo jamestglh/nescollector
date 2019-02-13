@@ -5,10 +5,10 @@ using System.Text;
 
 namespace NesCollector.Data.Interfaces
 {
-    interface IWishlistRepository
+    public interface IWishlistRepository
     {
         //Read
-        Wishlist GetByID(int wishlistId);
+        Wishlist GetById(int wishlistId);
         ICollection<Wishlist> GetWishlistGamesByUserId(int userId);
         ICollection<Wishlist> GetWishlistGamesByGameId(int gameId);
 

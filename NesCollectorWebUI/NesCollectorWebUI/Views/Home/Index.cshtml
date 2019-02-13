@@ -1,6 +1,17 @@
-﻿@{
+﻿@model NesCollector.Models.Game
+
+@{
     ViewData["Title"] = "Home Page";
 }
+
+<h2>Index</h2>
+<div>
+    @Model.Id - @Model.Title - @Model.Genre - @Model.SystemId
+
+</div>
+
+
+
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">

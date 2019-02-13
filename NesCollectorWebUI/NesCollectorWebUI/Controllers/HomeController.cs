@@ -4,15 +4,25 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NesCollector.Service.Services;
 using NesCollectorWebUI.Models;
 
 namespace NesCollectorWebUI.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IGameService _gameService;
+
+        //constructor
+        public HomeController(IGameService gameService)
+        {
+            _gameService = gameService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var game = _gameService.GetById(345);
+            return View(game);
         }
 
         public IActionResult About()

@@ -19,12 +19,12 @@ namespace NesCollector.Data.Implementation.Mock
 
         public bool DeleteById(int userGameId)
         {
-            var userGameToDelete = GetByID(userGameId);
+            var userGameToDelete = GetById(userGameId);
             UserGames.Remove(userGameToDelete);
             return true;
         }
 
-        public UserGame GetByID(int userGameId)
+        public UserGame GetById(int userGameId)
         {
             return UserGames.Single(u => u.Id == userGameId);
         }
