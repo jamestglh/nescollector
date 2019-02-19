@@ -43,15 +43,6 @@ namespace NesCollector.Data.Implementation.EFCore
             using (var db = new NesCollectorDBContext())
             {
                 return db.Games.Single(g => g.Id == gameId);
-                //var game = new Game();
-                //foreach (var g in db.Games)
-                //{
-                //    if (g.Id == gameId)
-                //    {
-                //        game = g;
-                //    }
-                //}
-                //return game;
             }
         }
 
