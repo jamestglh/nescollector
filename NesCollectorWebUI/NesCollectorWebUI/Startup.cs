@@ -85,7 +85,7 @@ namespace NesCollectorWebUI
         {
             services.AddScoped<IGameRepository, MockGameRepository>();
             services.AddScoped<IUserGameRepository, MockUserGameRepository>();
-            services.AddScoped<IUserRepository, MockUserRepository>();
+            services.AddScoped<IAppUserRepository, MockUserRepository>();
             services.AddScoped<IWishlistRepository, MockWishlistRepository>();
         }
 
@@ -93,7 +93,7 @@ namespace NesCollectorWebUI
         {
             services.AddScoped<IGameRepository, EFCoreGameRepository>();
             services.AddScoped<IUserGameRepository, EFCoreUserGameRepository>();
-            services.AddScoped<IUserRepository, EFCoreUserRepository>();
+            services.AddScoped<IAppUserRepository, EFCoreAppUserRepository>();
             services.AddScoped<IWishlistRepository, EFCoreWishlistRepository>();
         }
 

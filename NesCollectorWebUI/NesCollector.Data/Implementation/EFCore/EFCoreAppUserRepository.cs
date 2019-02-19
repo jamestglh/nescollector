@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace NesCollector.Data.Implementation.EFCore
 {
-    public class EFCoreUserRepository : IUserRepository
+    public class EFCoreAppUserRepository : IAppUserRepository
     {
         public AppUser Create(AppUser newUser)
         {
@@ -21,7 +21,7 @@ namespace NesCollector.Data.Implementation.EFCore
             }
         }
 
-        public bool DeleteById(int userId)
+        public bool DeleteById(string userId)
         {
             using (var db = new NesCollectorDBContext())
             {
@@ -38,11 +38,11 @@ namespace NesCollector.Data.Implementation.EFCore
             }
         }
 
-        public AppUser GetById(int userId)
+        public AppUser GetById(string userId)
         {
             using (var db = new NesCollectorDBContext())
             {
-                return db.Users.Single(u => u.UserId == userId);
+                return db.Users.Single(u => u.Id == userId);
             }
         }
 
@@ -66,7 +66,7 @@ namespace NesCollector.Data.Implementation.EFCore
         {
             using (var db = new NesCollectorDBContext())
             {
-                var existingUser = GetById(updatedUser.UserId);
+                var existingUser = GetById(updatedUser.Id);
                 db.Entry(existingUser).CurrentValues.SetValues(updatedUser);
                 db.SaveChanges();
 

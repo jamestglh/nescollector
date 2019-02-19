@@ -5,10 +5,10 @@ using System.Text;
 
 namespace NesCollector.Data.Interfaces
 {
-    public interface IUserRepository
+    public interface IAppUserRepository
     {
         //Read
-        AppUser GetById(int userId);
+        AppUser GetById(string userId);
         ICollection<AppUser> GetUsersByUserGameId(int userGameId);
         ICollection<AppUser> GetUsersByWishlistId(int wishlistId);
 
@@ -19,6 +19,6 @@ namespace NesCollector.Data.Interfaces
         AppUser Update(AppUser updatedUser);
 
         //Delete
-        bool DeleteById(int userId);
+        bool DeleteById(string userId);
     }
 }

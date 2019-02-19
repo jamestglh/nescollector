@@ -39,13 +39,13 @@ namespace NesCollector.Data.Context
             modelBuilder.Entity<UserGame>()
                 .HasOne(ug => ug.User)
                 .WithMany(u => u.UserGames)
-                .HasForeignKey(ug => ug.Id)
+                .HasForeignKey(ug => ug.UserId)
                 .HasConstraintName("ForeignKey_UserGame_AppUser");
 
             modelBuilder.Entity<Wishlist>()
                 .HasOne(w => w.User)
                 .WithMany(u => u.Wishlists)
-                .HasForeignKey(w => w.Id)
+                .HasForeignKey(w => w.UserId)
                 .HasConstraintName("ForeignKey_UserGame_AppUser");
 
 

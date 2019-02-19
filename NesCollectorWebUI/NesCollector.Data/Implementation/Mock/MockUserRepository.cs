@@ -7,26 +7,27 @@ using NesCollector.Models;
 
 namespace NesCollector.Data.Implementation.Mock
 {
-    public class MockUserRepository : IUserRepository
+    public class MockUserRepository : IAppUserRepository
     {
         private List<AppUser> Users = new List<AppUser>();
         public AppUser Create(AppUser newUser)
         {
-            newUser.UserId = Users.OrderByDescending(u => u.UserId).Single().UserId + 1;
+            Guid g = Guid.NewGuid();
+            newUser.Id = g.ToString();
             Users.Add(newUser);
             return newUser;
         }
 
-        public bool DeleteById(int userId)
+        public bool DeleteById(string userId)
         {
             var userToDelete = GetById(userId);
             Users.Remove(userToDelete);
             return true;
         }
 
-        public AppUser GetById(int userId)
+        public AppUser GetById(string userId)
         {
-            return Users.Single(u => u.UserId == userId);
+            return Users.Single(u => u.Id == userId);
         }
 
         public ICollection<AppUser> GetUsersByUserGameId(int userGameId) // returns a list of  users that owns a particular game
@@ -64,7 +65,7 @@ namespace NesCollector.Data.Implementation.Mock
 
         public AppUser Update(AppUser updatedUser)
         {
-            DeleteById(updatedUser.UserId);
+            DeleteById(updatedUser.Id);
             Users.Add(updatedUser);
 
             return updatedUser;

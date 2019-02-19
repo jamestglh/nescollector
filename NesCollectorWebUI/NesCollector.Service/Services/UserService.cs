@@ -11,7 +11,7 @@ namespace NesCollector.Service.Services
     public interface IUserService
     {
         //Read
-        AppUser GetById(int userId);
+        AppUser GetById(string userId);
         ICollection<AppUser> GetUsersByUserGameId(int userGameId);
         ICollection<AppUser> GetUsersByWishlistId(int wishlistId);
 
@@ -22,13 +22,13 @@ namespace NesCollector.Service.Services
         AppUser Update(AppUser updatedUser);
 
         //Delete
-        bool DeleteById(int userId);
+        bool DeleteById(string userId);
     }
     public class UserService : IUserService
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IAppUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IAppUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -38,12 +38,12 @@ namespace NesCollector.Service.Services
             return _userRepository.Create(newUser);
         }
 
-        public bool DeleteById(int userId)
+        public bool DeleteById(string userId)
         {
             return _userRepository.DeleteById(userId);
         }
 
-        public AppUser GetById(int userId)
+        public AppUser GetById(string userId)
         {
             return _userRepository.GetById(userId);
         }
