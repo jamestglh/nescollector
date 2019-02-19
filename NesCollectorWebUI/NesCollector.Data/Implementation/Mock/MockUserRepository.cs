@@ -9,10 +9,10 @@ namespace NesCollector.Data.Implementation.Mock
 {
     public class MockUserRepository : IUserRepository
     {
-        private List<User> Users = new List<User>();
-        public User Create(User newUser)
+        private List<AppUser> Users = new List<AppUser>();
+        public AppUser Create(AppUser newUser)
         {
-            newUser.Id = Users.OrderByDescending(u => u.Id).Single().Id + 1;
+            newUser.UserId = Users.OrderByDescending(u => u.UserId).Single().UserId + 1;
             Users.Add(newUser);
             return newUser;
         }
@@ -24,16 +24,16 @@ namespace NesCollector.Data.Implementation.Mock
             return true;
         }
 
-        public User GetById(int userId)
+        public AppUser GetById(int userId)
         {
-            return Users.Single(u => u.Id == userId);
+            return Users.Single(u => u.UserId == userId);
         }
 
-        public ICollection<User> GetUsersByUserGameId(int userGameId) // returns a list of  users that owns a particular game
+        public ICollection<AppUser> GetUsersByUserGameId(int userGameId) // returns a list of  users that owns a particular game
         {
 
-            var results = new List<User>();
-            foreach (User user in Users)
+            var results = new List<AppUser>();
+            foreach (AppUser user in Users)
             {
                 foreach (UserGame userGame in user.UserGames)
                 {
@@ -46,10 +46,10 @@ namespace NesCollector.Data.Implementation.Mock
             return results;
         }
 
-        public ICollection<User> GetUsersByWishlistId(int wishlistId) // returns a list of users that wishlists a particular game
+        public ICollection<AppUser> GetUsersByWishlistId(int wishlistId) // returns a list of users that wishlists a particular game
         {
-            var results = new List<User>();
-            foreach (User user in Users)
+            var results = new List<AppUser>();
+            foreach (AppUser user in Users)
             {
                 foreach (Wishlist wishlist in user.Wishlists)
                 {
@@ -62,9 +62,9 @@ namespace NesCollector.Data.Implementation.Mock
             return results;
         }
 
-        public User Update(User updatedUser)
+        public AppUser Update(AppUser updatedUser)
         {
-            DeleteById(updatedUser.Id);
+            DeleteById(updatedUser.UserId);
             Users.Add(updatedUser);
 
             return updatedUser;

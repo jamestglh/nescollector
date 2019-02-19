@@ -14,6 +14,7 @@ using NesCollector.Data.Context;
 using NesCollector.Data.Implementation.EFCore;
 using NesCollector.Data.Implementation.Mock;
 using NesCollector.Data.Interfaces;
+using NesCollector.Models;
 using NesCollector.Service.Services;
 
 namespace NesCollectorWebUI
@@ -45,6 +46,9 @@ namespace NesCollectorWebUI
             //services layer injection
             GetDependancyResolvedForServiceLayer(services);
 
+            services.AddDbContext<NesCollectorDBContext>();
+            services.AddDefaultIdentity<AppUser>()
+                .AddEntityFrameworkStores<NesCollectorDBContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -65,6 +69,8 @@ namespace NesCollectorWebUI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

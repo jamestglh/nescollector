@@ -7,17 +7,18 @@ using CsvHelper;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace NesCollector.Data.Context
 {
-    public class NesCollectorDBContext : DbContext
+    public class NesCollectorDBContext : IdentityDbContext<AppUser>
     {
          
 
         // Interpret models - turning into DB entities
         // query those entities (tables)
 
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<UserGame> UserGames { get; set; }
         public DbSet<Wishlist> Wishlists { get; set; }
@@ -32,7 +33,23 @@ namespace NesCollector.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-             
+
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<UserGame>()
+                .HasOne(ug => ug.User)
+                .WithMany(u => u.UserGames)
+                .HasForeignKey(ug => ug.UserId)
+                .HasConstraintName("ForeignKey_UserGame_AppUser");
+
+            modelBuilder.Entity<Wishlist>()
+                .HasOne(w => w.User)
+                .WithMany(u => u.Wishlists)
+                .HasForeignKey(w => w.UserId)
+                .HasConstraintName("ForeignKey_UserGame_AppUser");
+
+
+
             using (var reader = new StreamReader(@"..\NesCollector.Data\SeedData\nesmasterlist.csv"))
             using (var csv = new CsvReader(reader))
 

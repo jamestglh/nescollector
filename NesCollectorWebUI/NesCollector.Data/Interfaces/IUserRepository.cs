@@ -8,15 +8,15 @@ namespace NesCollector.Data.Interfaces
     public interface IUserRepository
     {
         //Read
-        User GetById(int userId);
-        ICollection<User> GetUsersByUserGameId(int userGameId);
-        ICollection<User> GetUsersByWishlistId(int wishlistId);
+        AppUser GetById(int userId);
+        ICollection<AppUser> GetUsersByUserGameId(int userGameId);
+        ICollection<AppUser> GetUsersByWishlistId(int wishlistId);
 
         //Create 
-        User Create(User newUser);
+        AppUser Create(AppUser newUser);
 
         //Update
-        User Update(User updatedUser);
+        AppUser Update(AppUser updatedUser);
 
         //Delete
         bool DeleteById(int userId);

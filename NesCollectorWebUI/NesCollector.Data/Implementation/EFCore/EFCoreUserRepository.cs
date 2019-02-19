@@ -10,7 +10,7 @@ namespace NesCollector.Data.Implementation.EFCore
 {
     public class EFCoreUserRepository : IUserRepository
     {
-        public User Create(User newUser)
+        public AppUser Create(AppUser newUser)
         {
             using (var db = new NesCollectorDBContext())
             {
@@ -38,15 +38,15 @@ namespace NesCollector.Data.Implementation.EFCore
             }
         }
 
-        public User GetById(int userId)
+        public AppUser GetById(int userId)
         {
             using (var db = new NesCollectorDBContext())
             {
-                return db.Users.Single(u => u.Id == userId);
+                return db.Users.Single(u => u.UserId == userId);
             }
         }
 
-        public ICollection<User> GetUsersByUserGameId(int userGameId)
+        public ICollection<AppUser> GetUsersByUserGameId(int userGameId)
         {
             using (var db = new NesCollectorDBContext())
             {
@@ -54,7 +54,7 @@ namespace NesCollector.Data.Implementation.EFCore
             }
         }
 
-        public ICollection<User> GetUsersByWishlistId(int wishlistId)
+        public ICollection<AppUser> GetUsersByWishlistId(int wishlistId)
         {
             using (var db = new NesCollectorDBContext())
             {
@@ -62,11 +62,11 @@ namespace NesCollector.Data.Implementation.EFCore
             }
         }
 
-        public User Update(User updatedUser)
+        public AppUser Update(AppUser updatedUser)
         {
             using (var db = new NesCollectorDBContext())
             {
-                var existingUser = GetById(updatedUser.Id);
+                var existingUser = GetById(updatedUser.UserId);
                 db.Entry(existingUser).CurrentValues.SetValues(updatedUser);
                 db.SaveChanges();
 

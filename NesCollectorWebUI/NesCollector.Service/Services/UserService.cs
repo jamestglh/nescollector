@@ -11,15 +11,15 @@ namespace NesCollector.Service.Services
     public interface IUserService
     {
         //Read
-        User GetById(int userId);
-        ICollection<User> GetUsersByUserGameId(int userGameId);
-        ICollection<User> GetUsersByWishlistId(int wishlistId);
+        AppUser GetById(int userId);
+        ICollection<AppUser> GetUsersByUserGameId(int userGameId);
+        ICollection<AppUser> GetUsersByWishlistId(int wishlistId);
 
         //Create 
-        User Create(User newUser);
+        AppUser Create(AppUser newUser);
 
         //Update
-        User Update(User updatedUser);
+        AppUser Update(AppUser updatedUser);
 
         //Delete
         bool DeleteById(int userId);
@@ -33,7 +33,7 @@ namespace NesCollector.Service.Services
             _userRepository = userRepository;
         }
 
-        public User Create(User newUser)
+        public AppUser Create(AppUser newUser)
         {
             return _userRepository.Create(newUser);
         }
@@ -43,22 +43,22 @@ namespace NesCollector.Service.Services
             return _userRepository.DeleteById(userId);
         }
 
-        public User GetById(int userId)
+        public AppUser GetById(int userId)
         {
             return _userRepository.GetById(userId);
         }
 
-        public ICollection<User> GetUsersByUserGameId(int userGameId)
+        public ICollection<AppUser> GetUsersByUserGameId(int userGameId)
         {
             return _userRepository.GetUsersByUserGameId(userGameId);
         }
 
-        public ICollection<User> GetUsersByWishlistId(int wishlistId)
+        public ICollection<AppUser> GetUsersByWishlistId(int wishlistId)
         {
             return _userRepository.GetUsersByWishlistId(wishlistId);
         }
 
-        public User Update(User updatedUser)
+        public AppUser Update(AppUser updatedUser)
         {
             return _userRepository.Update(updatedUser);
         }
