@@ -56,7 +56,7 @@ namespace NesCollector.Data.Implementation.EFCore
             }
         }
 
-        public ICollection<UserGame> GetUserGamesByUserId(int userId)
+        public ICollection<UserGame> GetUserGamesByUserId(string userId)
         {
             using (var db = new NesCollectorDBContext())
             {

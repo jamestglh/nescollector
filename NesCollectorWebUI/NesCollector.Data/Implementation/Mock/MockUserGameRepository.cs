@@ -34,7 +34,7 @@ namespace NesCollector.Data.Implementation.Mock
             return UserGames.FindAll(u => u.GameId == gameId);
         }
 
-        public ICollection<UserGame> GetUserGamesByUserId(int userId) // return a list of all games owned by a single user.
+        public ICollection<UserGame> GetUserGamesByUserId(string userId) // return a list of all games owned by a single user.
         {
             return UserGames.FindAll(u => u.UserId == userId);
         }

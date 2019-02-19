@@ -13,7 +13,7 @@ namespace NesCollector.Service.Services
     {
         //Read
         Wishlist GetById(int wishlistId);
-        ICollection<Wishlist> GetWishlistGamesByUserId(int userId);
+        ICollection<Wishlist> GetWishlistGamesByUserId(string userId);
         ICollection<Wishlist> GetWishlistGamesByGameId(int gameId);
 
 
@@ -57,7 +57,7 @@ namespace NesCollector.Service.Services
             return _wishlistRepository.GetWishlistGamesByGameId(gameId);
         }
 
-        public ICollection<Wishlist> GetWishlistGamesByUserId(int userId)
+        public ICollection<Wishlist> GetWishlistGamesByUserId(string userId)
         {
             return _wishlistRepository.GetWishlistGamesByUserId(userId);
         }

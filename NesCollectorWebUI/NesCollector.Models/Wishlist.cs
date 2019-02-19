@@ -13,7 +13,7 @@ namespace NesCollector.Models
         public double MaxPrice { get; set; }
 
         //foreign keys
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public AppUser User { get; set; } //navigation reference
         public int GameId { get; set; }
         public Game Game { get; set; } //navigation reference

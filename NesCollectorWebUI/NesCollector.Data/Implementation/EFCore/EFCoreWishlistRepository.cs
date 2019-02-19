@@ -56,7 +56,7 @@ namespace NesCollector.Data.Implementation.EFCore
             }
         }
 
-        public ICollection<Wishlist> GetWishlistGamesByUserId(int userId)
+        public ICollection<Wishlist> GetWishlistGamesByUserId(string userId)
         {
             using (var db = new NesCollectorDBContext())
             {

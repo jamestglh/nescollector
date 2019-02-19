@@ -9,7 +9,7 @@ namespace NesCollector.Data.Interfaces
     {
         //Read
         Wishlist GetById(int wishlistId);
-        ICollection<Wishlist> GetWishlistGamesByUserId(int userId);
+        ICollection<Wishlist> GetWishlistGamesByUserId(string userId);
         ICollection<Wishlist> GetWishlistGamesByGameId(int gameId);
 
 

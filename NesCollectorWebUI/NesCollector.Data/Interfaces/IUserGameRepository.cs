@@ -9,7 +9,7 @@ namespace NesCollector.Data.Interfaces
     {
         //Read
         UserGame GetById(int userGameId);
-        ICollection<UserGame> GetUserGamesByUserId(int userId);
+        ICollection<UserGame> GetUserGamesByUserId(string userId);
         ICollection<UserGame> GetUserGamesByGameId(int gameId);
 
 

@@ -13,7 +13,7 @@ namespace NesCollector.Service.Services
         //Read
    
         UserGame GetById(int userGameId);
-        ICollection<UserGame> GetUserGamesByUserId(int userId);
+        ICollection<UserGame> GetUserGamesByUserId(string userId);
         ICollection<UserGame> GetUserGamesByGameId(int gameId);
 
 
@@ -55,7 +55,7 @@ namespace NesCollector.Service.Services
             return _userGameRepository.GetUserGamesByGameId(gameId);
         }
 
-        public ICollection<UserGame> GetUserGamesByUserId(int userId)
+        public ICollection<UserGame> GetUserGamesByUserId(string userId)
         {
             return _userGameRepository.GetUserGamesByUserId(userId);
         }

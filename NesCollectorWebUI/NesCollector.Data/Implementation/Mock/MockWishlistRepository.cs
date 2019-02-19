@@ -35,7 +35,7 @@ namespace NesCollector.Data.Implementation.Mock
             return Wishlists.FindAll(w => w.GameId == gameId);
         }
 
-        public ICollection<Wishlist> GetWishlistGamesByUserId(int userId) // generates a list of all games wished by a particular user
+        public ICollection<Wishlist> GetWishlistGamesByUserId(string userId) // generates a list of all games wished by a particular user
         {
             return Wishlists.FindAll(w => w.UserId == userId);
         }
