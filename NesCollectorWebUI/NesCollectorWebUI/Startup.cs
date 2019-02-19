@@ -38,20 +38,13 @@ namespace NesCollectorWebUI
             });
 
             //repository layer  injection
-            //services.AddScoped<IGameRepository, MockGameRepository>();
-            //services.AddScoped<IUserGameRepository, MockUserGameRepository>();
-            //services.AddScoped<IUserRepository, MockUserRepository>();
-            //services.AddScoped<IWishlistRepository, MockWishlistRepository>();
-            services.AddScoped<IGameRepository, EFCoreGameRepository>();
-            services.AddScoped<IUserGameRepository, EFCoreUserGameRepository>();
-            services.AddScoped<IUserRepository, EFCoreUserRepository>();
-            services.AddScoped<IWishlistRepository, EFCoreWishlistRepository>();
+            //GetDependancyResolvedForMockRepositoryLayer(services);
+            GetDependancyResolvedForEFCoreRepositoryLayer(services);
+
 
             //services layer injection
-            services.AddScoped<IGameService, GameService>();
-            services.AddScoped<IUserGameService, UserGameService>();
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IWishlistService, WishlistService>();
+            GetDependancyResolvedForServiceLayer(services);
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -79,6 +72,31 @@ namespace NesCollectorWebUI
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+        }
+
+        private void GetDependancyResolvedForMockRepositoryLayer(IServiceCollection services)
+        {
+            services.AddScoped<IGameRepository, MockGameRepository>();
+            services.AddScoped<IUserGameRepository, MockUserGameRepository>();
+            services.AddScoped<IUserRepository, MockUserRepository>();
+            services.AddScoped<IWishlistRepository, MockWishlistRepository>();
+        }
+
+        private void GetDependancyResolvedForEFCoreRepositoryLayer(IServiceCollection services)
+        {
+            services.AddScoped<IGameRepository, EFCoreGameRepository>();
+            services.AddScoped<IUserGameRepository, EFCoreUserGameRepository>();
+            services.AddScoped<IUserRepository, EFCoreUserRepository>();
+            services.AddScoped<IWishlistRepository, EFCoreWishlistRepository>();
+        }
+
+        private void GetDependancyResolvedForServiceLayer(IServiceCollection services)
+        {
+            services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IUserGameService, UserGameService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IWishlistService, WishlistService>();
         }
     }
 }

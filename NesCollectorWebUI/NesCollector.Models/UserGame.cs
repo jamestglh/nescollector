@@ -18,7 +18,7 @@ namespace NesCollector.Models
 
         //foreign keys
         public int UserId { get; set; }
-        public User User { get; set; } //navigation reference
+        public AppUser User { get; set; } //navigation reference
         public int GameId { get; set; }
         public Game Game { get; set; } //navigation reference
 
