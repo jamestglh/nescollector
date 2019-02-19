@@ -46,7 +46,7 @@ namespace NesCollector.Data.Context
                 .HasOne(w => w.User)
                 .WithMany(u => u.Wishlists)
                 .HasForeignKey(w => w.UserId)
-                .HasConstraintName("ForeignKey_UserGame_AppUser");
+                .HasConstraintName("ForeignKey_Wishlist_AppUser");
 
 
 

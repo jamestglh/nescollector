@@ -7,7 +7,7 @@ using NesCollector.Models;
 
 namespace NesCollector.Data.Implementation.Mock
 {
-    public class MockUserRepository : IAppUserRepository
+    public class MockAppUserRepository : IAppUserRepository
     {
         private List<AppUser> Users = new List<AppUser>();
         public AppUser Create(AppUser newUser)

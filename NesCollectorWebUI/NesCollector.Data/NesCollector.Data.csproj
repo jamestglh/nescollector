@@ -15,9 +15,12 @@
     <Compile Remove="Migrations\20190207003727_initial.cs" />
     <Compile Remove="Migrations\20190207010811_init.cs" />
     <Compile Remove="Migrations\20190207011205_init.cs" />
+    <Compile Remove="Migrations\20190208164755_init.cs" />
     <Compile Remove="Migrations\20190219211046_identity-provider.cs" />
     <Compile Remove="Migrations\20190219212026_identity-provider.cs" />
     <Compile Remove="Migrations\20190219213037_identity-provider.cs" />
+    <Compile Remove="Migrations\20190219214507_identity-provider.cs" />
+    <Compile Remove="Migrations\20190219225832_init-and-identity-provider.cs" />
   </ItemGroup>
 
   <ItemGroup>

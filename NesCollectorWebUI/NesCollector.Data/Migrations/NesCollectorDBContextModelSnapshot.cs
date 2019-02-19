@@ -1248,7 +1248,7 @@ namespace NesCollector.Data.Migrations
                     b.HasOne("NesCollector.Models.AppUser", "User")
                         .WithMany("Wishlists")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("ForeignKey_UserGame_AppUser");
+                        .HasConstraintName("ForeignKey_Wishlist_AppUser");
                 });
 #pragma warning restore 612, 618
         }
