@@ -14,11 +14,9 @@ namespace NesCollector.Data.Context
     public class NesCollectorDBContext : IdentityDbContext<AppUser>
     {
          
-
         // Interpret models - turning into DB entities
         // query those entities (tables)
 
-        //public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<UserGame> UserGames { get; set; }
         public DbSet<Wishlist> Wishlists { get; set; }
@@ -33,7 +31,6 @@ namespace NesCollector.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<UserGame>()
@@ -48,13 +45,8 @@ namespace NesCollector.Data.Context
                 .HasForeignKey(w => w.UserId)
                 .HasConstraintName("ForeignKey_Wishlist_AppUser");
 
-
-
             using (var reader = new StreamReader(@"..\NesCollector.Data\SeedData\nesmasterlist.csv"))
             using (var csv = new CsvReader(reader))
-
-
-
             {
                 IEnumerable<Game> games = csv.GetRecords<Game>();
                 foreach (var Game in games)
