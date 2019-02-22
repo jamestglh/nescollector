@@ -13,6 +13,8 @@ namespace NesCollector.Models
         public string Genre { get; set; }
         public string CoverURL { get; set; }
         public string Upc { get; set; }
+        public string LoosePrice { get; set; }
+        public string CibPrice { get; set; }
 
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NesCollector.Data.Context;
 
 namespace NesCollector.Data.Migrations
 {
     [DbContext(typeof(NesCollectorDBContext))]
-    partial class NesCollectorDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190222194143_added-identity-roles")]
+    partial class addedidentityroles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,8 +45,8 @@ namespace NesCollector.Data.Migrations
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
-                        new { Id = "8e931f40-18ff-439a-8d7e-f5296aba26dc", ConcurrencyStamp = "9eb94db2-749d-400a-bd50-e811b84655a4", Name = "User", NormalizedName = "USER" },
-                        new { Id = "3e7119b4-b4df-4239-b06c-0b9f962c962c", ConcurrencyStamp = "0e614230-3636-4bfd-a1df-56a6f46cd7ce", Name = "Admin", NormalizedName = "ADMIN" }
+                        new { Id = "f6667f72-b09e-49db-b740-ab2ad275dee6", ConcurrencyStamp = "68534c21-d307-4d3e-9a35-39d49ad0f32e", Name = "User", NormalizedName = "USER" },
+                        new { Id = "1b31f98b-3006-424f-9e56-909b8438a4d8", ConcurrencyStamp = "3c882ff1-86f0-4f27-94f1-dcc955a5d669", Name = "SuperUser", NormalizedName = "SUPERUSER" }
                     );
                 });
 

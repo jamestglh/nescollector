@@ -7,9 +7,9 @@ namespace NesCollector.Models
     public class Wishlist
     {
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Genre { get; set; }
-        public string SystemId { get; set; }
+        //public string Title { get; set; }
+        //public string Genre { get; set; }
+        //public string SystemId { get; set; }
         public double MaxPrice { get; set; }
 
         //foreign keys

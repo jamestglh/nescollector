@@ -7,9 +7,9 @@ namespace NesCollector.Models
     public class UserGame
     {
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Genre { get; set; }
-        public string SystemId { get; set; }
+        //public string Title { get; set; }
+        //public string Genre { get; set; }
+        //public string SystemId { get; set; }
         public string Condition { get; set; }
         public bool HasBox { get; set; }
         public bool HasManual { get; set; }

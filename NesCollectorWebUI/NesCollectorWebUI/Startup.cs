@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -47,7 +48,7 @@ namespace NesCollectorWebUI
             GetDependancyResolvedForServiceLayer(services);
 
             services.AddDbContext<NesCollectorDBContext>();
-            services.AddDefaultIdentity<AppUser>()
+            services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<NesCollectorDBContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

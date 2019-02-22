@@ -8,12 +8,12 @@ using System.IO;
 using System.Reflection;
 using System.Linq;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace NesCollector.Data.Context
 {
     public class NesCollectorDBContext : IdentityDbContext<AppUser>
     {
-         
         // Interpret models - turning into DB entities
         // query those entities (tables)
 
@@ -45,6 +45,11 @@ namespace NesCollector.Data.Context
                 .HasForeignKey(w => w.UserId)
                 .HasConstraintName("ForeignKey_Wishlist_AppUser");
 
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Name = "User", NormalizedName = "USER" },
+                new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" }
+                );
+
             using (var reader = new StreamReader(@"..\NesCollector.Data\SeedData\nesmasterlist.csv"))
             using (var csv = new CsvReader(reader))
             {
@@ -57,13 +62,24 @@ namespace NesCollector.Data.Context
                     var title = csv.GetField<string>("Title");
                     var genre = csv.GetField<string>("Genre");
                     var coverUrl = csv.GetField<string>("CoverURL");
+                    //var loosePrice = csv.GetField<string>("LoosePrice");
+                    //var cibPrice = csv.GetField<string>("CibPrice");
+
 
                     modelBuilder.Entity<Game>().HasData(
-                    new Game { Id = int.Parse(id), ApiGameId = int.Parse(apiGameId), SystemId = systemId, Title = title, Genre = genre });
+                    new Game { Id = int.Parse(id),
+                        ApiGameId = int.Parse(apiGameId),
+                        SystemId = systemId,
+                        Title = title,
+                        Genre = genre,
+                        CoverURL = coverUrl,
+                        //LoosePrice = loosePrice,
+                        //CibPrice = cibPrice,
+                    });
+
 
                 }
             }
         }
-
     }
 }

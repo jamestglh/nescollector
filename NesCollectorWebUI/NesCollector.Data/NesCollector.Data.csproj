@@ -21,6 +21,12 @@
     <Compile Remove="Migrations\20190219213037_identity-provider.cs" />
     <Compile Remove="Migrations\20190219214507_identity-provider.cs" />
     <Compile Remove="Migrations\20190219225832_init-and-identity-provider.cs" />
+    <Compile Remove="Migrations\20190219230208_init-and-identity-provider.cs" />
+    <Compile Remove="Migrations\20190222182907_removed-unneeded-data-from-tables.cs" />
+    <Compile Remove="Migrations\20190222184341_added-price-columns-to-games-table.cs" />
+    <Compile Remove="Migrations\20190222190705_adding-pricing-to-games-table.cs" />
+    <Compile Remove="Migrations\20190222191119_adding-pricing-to-games-table.cs" />
+    <Compile Remove="Migrations\20190222191717_adding-pricing-to-games-table.cs" />
   </ItemGroup>
 
   <ItemGroup>

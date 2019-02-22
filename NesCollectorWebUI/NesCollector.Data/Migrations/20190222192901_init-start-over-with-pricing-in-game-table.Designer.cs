@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NesCollector.Data.Context;
 
 namespace NesCollector.Data.Migrations
 {
     [DbContext(typeof(NesCollectorDBContext))]
-    partial class NesCollectorDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190222192901_init-start-over-with-pricing-in-game-table")]
+    partial class initstartoverwithpricingingametable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,11 +43,6 @@ namespace NesCollector.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new { Id = "8e931f40-18ff-439a-8d7e-f5296aba26dc", ConcurrencyStamp = "9eb94db2-749d-400a-bd50-e811b84655a4", Name = "User", NormalizedName = "USER" },
-                        new { Id = "3e7119b4-b4df-4239-b06c-0b9f962c962c", ConcurrencyStamp = "0e614230-3636-4bfd-a1df-56a6f46cd7ce", Name = "Admin", NormalizedName = "ADMIN" }
-                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
