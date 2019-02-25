@@ -51,5 +51,9 @@ namespace NesCollector.Data.Implementation.Mock
 
             return updatedGame;
         }
+        public ICollection<Game> GetByGameConsoleId(int gameConsoleId)
+        {
+            return Games.FindAll(g => g.GameConsoleId == gameConsoleId);
+        }
     }
 }

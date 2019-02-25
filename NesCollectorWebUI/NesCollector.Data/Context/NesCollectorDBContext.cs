@@ -20,6 +20,7 @@ namespace NesCollector.Data.Context
         public DbSet<Game> Games { get; set; }
         public DbSet<UserGame> UserGames { get; set; }
         public DbSet<Wishlist> Wishlists { get; set; }
+        public DbSet<GameConsole> GameConsoles { get; set; }
 
         //setting up provider (sqlserver) and location of db
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
@@ -32,6 +33,8 @@ namespace NesCollector.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<GameConsole>().HasData(new GameConsole { Id = 1, Name = "NES" });
 
             modelBuilder.Entity<UserGame>()
                 .HasOne(ug => ug.User)
@@ -51,33 +54,41 @@ namespace NesCollector.Data.Context
                 );
 
             using (var reader = new StreamReader(@"..\NesCollector.Data\SeedData\nesmasterlist.csv"))
-            using (var csv = new CsvReader(reader))
+            using (var csv = new CsvReader(reader, new CsvHelper.Configuration.Configuration { HeaderValidated = null, MissingFieldFound = null }))
             {
                 IEnumerable<Game> games = csv.GetRecords<Game>();
+
+
                 foreach (var Game in games)
                 {
-                    var id = csv.GetField<string>("Id");
-                    var apiGameId = csv.GetField<string>("ApiGameId");
+                    var id = csv.GetField<int>("Id");
+                    var apiGameId = csv.GetField<int>("ApiGameId");
                     var systemId = csv.GetField<string>("SystemId");
                     var title = csv.GetField<string>("Title");
                     var genre = csv.GetField<string>("Genre");
                     var coverUrl = csv.GetField<string>("CoverURL");
-                    //var loosePrice = csv.GetField<string>("LoosePrice");
-                    //var cibPrice = csv.GetField<string>("CibPrice");
+                    var upc = csv.GetField<string>("Upc");
+                    var loosePrice = csv.GetField<double>("LoosePrice");
+                    var cibPrice = csv.GetField<double>("CibPrice");
+                    var gameConsoleId = csv.GetField<int>("GameConsoleId");
+
 
 
                     modelBuilder.Entity<Game>().HasData(
-                    new Game { Id = int.Parse(id),
-                        ApiGameId = int.Parse(apiGameId),
+                    new Game
+                    {
+                        Id = id,
+                        ApiGameId = apiGameId,
                         SystemId = systemId,
                         Title = title,
                         Genre = genre,
                         CoverURL = coverUrl,
-                        //LoosePrice = loosePrice,
-                        //CibPrice = cibPrice,
-                    });
-
-
+                        Upc = upc,
+                        LoosePrice =  loosePrice,
+                        CibPrice = cibPrice,
+                        GameConsoleId = gameConsoleId,
+                    })
+                    ;
                 }
             }
         }

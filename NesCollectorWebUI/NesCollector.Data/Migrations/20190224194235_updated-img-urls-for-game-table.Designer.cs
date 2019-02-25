@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NesCollector.Data.Context;
 
 namespace NesCollector.Data.Migrations
 {
     [DbContext(typeof(NesCollectorDBContext))]
-    partial class NesCollectorDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190224194235_updated-img-urls-for-game-table")]
+    partial class updatedimgurlsforgametable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

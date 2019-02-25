@@ -88,6 +88,7 @@ namespace NesCollectorWebUI
             services.AddScoped<IUserGameRepository, MockUserGameRepository>();
             services.AddScoped<IAppUserRepository, MockAppUserRepository>();
             services.AddScoped<IWishlistRepository, MockWishlistRepository>();
+            services.AddScoped<IGameConsoleRepository, MockGameConsoleRepository>();
         }
 
         private void GetDependancyResolvedForEFCoreRepositoryLayer(IServiceCollection services)
@@ -96,6 +97,7 @@ namespace NesCollectorWebUI
             services.AddScoped<IUserGameRepository, EFCoreUserGameRepository>();
             services.AddScoped<IAppUserRepository, EFCoreAppUserRepository>();
             services.AddScoped<IWishlistRepository, EFCoreWishlistRepository>();
+            services.AddScoped<IGameConsoleRepository, EFCoreGameConsoleRepository>();
         }
 
         private void GetDependancyResolvedForServiceLayer(IServiceCollection services)
@@ -104,6 +106,7 @@ namespace NesCollectorWebUI
             services.AddScoped<IUserGameService, UserGameService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IWishlistService, WishlistService>();
+            services.AddScoped<IGameConsoleService, GameConsoleService>();
         }
     }
 }

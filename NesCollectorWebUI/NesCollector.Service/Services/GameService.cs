@@ -13,6 +13,7 @@ namespace NesCollector.Service.Services
     {
         //Read
         Game GetById(int gameId);
+        ICollection<Game> GetByGameConsoleId(int gameConsoleId);
 
         //Create 
         Game Create(Game newGame);
@@ -40,6 +41,11 @@ namespace NesCollector.Service.Services
         public bool DeleteById(int gameId)
         {
             return _gameRepository.DeleteById(gameId);
+        }
+
+        public ICollection<Game> GetByGameConsoleId(int gameConsoleId)
+        {
+            return _gameRepository.GetByGameConsoleId(gameConsoleId);
         }
 
         public Game GetById(int gameId)

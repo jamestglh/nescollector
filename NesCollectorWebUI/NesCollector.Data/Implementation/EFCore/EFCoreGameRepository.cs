@@ -57,5 +57,22 @@ namespace NesCollector.Data.Implementation.EFCore
                 return existingGame;
             }
         }
+
+        public ICollection<Game> GetByGameConsoleId(int gameConsoleId)
+        {
+            using (var db = new NesCollectorDBContext())
+            {
+                var results = new List<Game>();
+                foreach (var g in db.Games)
+                {
+                    if (g.GameConsoleId == gameConsoleId)
+                    {
+                        results.Add(g);
+                    }
+                }
+                return results;
+            }
+
+        }
     }
 }

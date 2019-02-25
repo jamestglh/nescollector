@@ -9,6 +9,7 @@ namespace NesCollector.Data.Interfaces
     {
         //Read
         Game GetById(int gameId);
+        ICollection<Game> GetByGameConsoleId(int gameConsoleId);
 
         //Create 
         Game Create(Game newGame);
