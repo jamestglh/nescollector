@@ -14,11 +14,15 @@ namespace NesCollectorWebUI.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly List<IdentityRole> _roles;
 
-        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager) // constructor for dependancy injection
+        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppUser> signInManager) // constructor for dependancy injection
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
+            _roles = _roleManager.Roles.ToList();
         }
 
 
@@ -28,18 +32,40 @@ namespace NesCollectorWebUI.Controllers
             //need to populate roles before rendering view, if you want ppl to choose roles
             var vm = new RegisterViewModel
             {
-                Roles = new SelectList(_roleManager.Roles.ToList())
+                Roles = new SelectList(_roles)
             };
             return View(vm);
         }
 
         [HttpPost]
-        public IActionResult Register(RegisterViewModel vm)
+        public async Task<IActionResult> Register(RegisterViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                //if form is valid register the user
+                var newUser = new AppUser
+                {
+                    Email = vm.Email,
+                    UserName = vm.Email
+
+                };
+                var result = await _userManager.CreateAsync(newUser, vm.Password);
+
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(newUser, vm.Role);
+
+                    await _signInManager.SignInAsync(newUser, true);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(error.Code, error.Description);
+                    }
+                }
             }
+            vm.Roles = new SelectList(_roles);
             return View(vm);
             
         }

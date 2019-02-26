@@ -43,6 +43,15 @@ namespace NesCollectorWebUI
             //GetDependancyResolvedForMockRepositoryLayer(services);
             GetDependancyResolvedForEFCoreRepositoryLayer(services);
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 16;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+            });
+
 
             //services layer injection
             GetDependancyResolvedForServiceLayer(services);

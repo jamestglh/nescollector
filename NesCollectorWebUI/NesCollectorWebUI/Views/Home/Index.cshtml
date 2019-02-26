@@ -3,6 +3,13 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>Welcome @User.Identity.Name!</p>
+    }
+
+</div>
 
 <h2>Index</h2>
 <div>

@@ -16,7 +16,8 @@ namespace NesCollectorWebUI.ViewModels
         public string Password { get; set; }
         [DataType(DataType.Password),Compare("Password", ErrorMessage = "Your passwords don't match!"), Required]
         public string ConfirmPassword { get; set; }
-        public string RoleId { get; set; }
+        [Required, Display(Name = "Select a Role")]
+        public string Role { get; set; }
         public SelectList Roles { get; set; }
     }
 }
