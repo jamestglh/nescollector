@@ -52,7 +52,7 @@ namespace NesCollectorWebUI.Controllers
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(newUser, vm.Role);
+                    await _userManager.AddToRoleAsync(newUser, vm.Role); // apply role
 
                     await _signInManager.SignInAsync(newUser, true);
                     return RedirectToAction("Index", "Home");
@@ -69,5 +69,46 @@ namespace NesCollectorWebUI.Controllers
             return View(vm);
             
         }
+
+        [HttpGet]
+        public IActionResult LogIn() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> LogIn(LogInViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(vm.Email, vm.Password, vm.RememberMe, false);
+
+                if (result.Succeeded)
+                {
+                    // get user
+                    var user = await _userManager.FindByEmailAsync(vm.Email);
+                    //identify role
+                    bool isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+                    //redirect to right controller based on role
+                    if (isAdmin)
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "User");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("SignIn", "Incorrect Username or Password!");
+                }
+            }
+
+            return View(vm);
+        }
+
+        public IActionResult LogOut()
+        {
+            _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
-}
+ }
