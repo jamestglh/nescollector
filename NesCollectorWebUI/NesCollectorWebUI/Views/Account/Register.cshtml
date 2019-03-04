@@ -4,15 +4,15 @@
 
     <h2 class="h3 mb-3 font-weight-normal">Register</h2>
 
-    <form class="form-signgin" asp-action="register" method="post">
+    <form class="form-signin" asp-action="register" method="post">
         <div asp-validation-summary="All"></div>
         <label class="sr-only" asp-for="Email"></label>
         <input class="form-control" asp-for="Email" />
-
+        
         <label class="sr-only" asp-for="Password"></label>
         <input class="form-control" asp-for="Password" />
   
-        <label class="sr-only" asp-for="ConfirmPassword"></label>
+        <label id="confirmPassword" class="sr-only" asp-for="ConfirmPassword"></label>
         <input class="form-control" asp-for="ConfirmPassword" />
     
         <label asp-for="Role"></label>
