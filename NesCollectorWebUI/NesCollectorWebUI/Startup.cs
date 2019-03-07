@@ -39,13 +39,10 @@ namespace NesCollectorWebUI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //repository layer  injection
-            //GetDependancyResolvedForMockRepositoryLayer(services);
-            GetDependancyResolvedForEFCoreRepositoryLayer(services);
-
-
-            //services layer injection
-            GetDependancyResolvedForServiceLayer(services);
+            //GetDependancyResolvedForMockRepositoryLayer(services); //repository layer  injection
+            GetDependancyResolvedForEFCoreRepositoryLayer(services); //ef core layer injection
+            //SetUpIdentityPasswordRules(services); // optional password rules
+            GetDependancyResolvedForServiceLayer(services); //services layer injection
 
             services.AddDbContext<NesCollectorDBContext>();
             services.AddIdentity<AppUser, IdentityRole>()
@@ -107,6 +104,18 @@ namespace NesCollectorWebUI
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IWishlistService, WishlistService>();
             services.AddScoped<IGameConsoleService, GameConsoleService>();
+        }
+
+        private void SetUpIdentityPasswordRules(IServiceCollection services)
+        {
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 16;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+            });
         }
     }
 }
