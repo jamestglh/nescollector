@@ -34,6 +34,7 @@
     <Compile Remove="Migrations\20190223225748_modded-services-for-gameconsole-model-part-2.cs" />
     <Compile Remove="Migrations\20190223230200_modded-services-for-gameconsole-model-part-2.cs" />
     <Compile Remove="Migrations\20190223230445_modded-services-for-gameconsole-model-part-2.cs" />
+    <Compile Remove="Migrations\20190225212310_testing-what-happens-when-i-remove-seed.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Game>
+@{
+    ViewData["Title"] = "ListAllGames";
+}
+
+<h2>List All Games</h2>
+
+<a class="btn btn-primary" asp-action="create" role="button">Add a Game</a>
+
+<table class="table table-dark">
+    <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Value (Loose)</th>
+        <th>Value (Complete)</th>
+        <th>Cover</th>
+    </tr>
+    @foreach (var g in Model)
+    {
+
+        <tr>
+            <td>@g.Title</td>
+            <td>@g.Genre</td>
+            <td>$@g.LoosePrice</td>
+            <td>$@g.CibPrice</td>
+            <td>
+                <img class="game-cover"src="@g.CoverURL" alt="Cover Art" />
+            </td>
+        </tr>
+    }
+
+
+</table>
+

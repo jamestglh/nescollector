@@ -15,6 +15,8 @@ using NesCollector.Data.Context;
 using NesCollector.Data.Implementation.EFCore;
 using NesCollector.Data.Implementation.Mock;
 using NesCollector.Data.Interfaces;
+using NesCollector.Data.ScheduledTasks;
+using NesCollector.Data.ScheduledTasks.Scheduling;
 using NesCollector.Models;
 using NesCollector.Service.Services;
 
@@ -39,19 +41,20 @@ namespace NesCollectorWebUI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //repository layer  injection
-            //GetDependancyResolvedForMockRepositoryLayer(services);
-            GetDependancyResolvedForEFCoreRepositoryLayer(services);
-
-
-            //services layer injection
-            GetDependancyResolvedForServiceLayer(services);
+            //GetDependancyResolvedForMockRepositoryLayer(services); //repository layer  injection
+            GetDependancyResolvedForEFCoreRepositoryLayer(services); //ef core layer injection
+            //SetUpIdentityPasswordRules(services); // optional password rules
+            GetDependancyResolvedForServiceLayer(services); //services layer injection
 
             services.AddDbContext<NesCollectorDBContext>();
             services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<NesCollectorDBContext>();
 
+            
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            EnableScheduledTaskOnStartup(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -107,6 +110,29 @@ namespace NesCollectorWebUI
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IWishlistService, WishlistService>();
             services.AddScoped<IGameConsoleService, GameConsoleService>();
+        }
+
+        private void SetUpIdentityPasswordRules(IServiceCollection services)
+        {
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 16;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+            });
+        }
+
+        private void EnableScheduledTaskOnStartup(IServiceCollection services)
+        {
+            services.AddSingleton<IScheduledTask, PriceUpdaterTask>();
+
+            services.AddScheduler((sender, args) =>
+            {
+                Console.Write(args.Exception.Message);
+                args.SetObserved();
+            });
         }
     }
 }

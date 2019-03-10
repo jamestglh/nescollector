@@ -1,0 +1,48 @@
+﻿@model UserCollectionViewModel
+
+
+<h2>List Collection</h2>
+
+<a class="btn btn-primary" asp-action="create" role="button">Add a Game to your Collection</a>
+
+@if (Model.UserGames.Count == 0)
+{
+    <div class=" alert alert-secondary">
+        You don't have any games added to your collection yet!
+    </div>
+
+}
+else
+{
+    <table class="table table-dark">
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Value</th>
+            <th>Cover</th>
+        </tr>
+        @foreach (var u in Model.UserGames)
+        {
+            @foreach (var g in Model.Games)
+
+            {
+                if (u.Id == g.Id)
+                {
+                    <tr>
+                        <td>@g.Title</td>
+                        <td>@g.Genre</td>
+
+                        @if (u.HasBox && u.HasManual){<td>@g.CibPrice</td>}
+                        else{<td>@g.LoosePrice</td>}
+
+                        <td>
+                            <img src="@g.CoverURL" alt="Cover Art" />
+                        </td>
+                    </tr>
+                }
+            }
+        }
+
+
+    </table>
+}

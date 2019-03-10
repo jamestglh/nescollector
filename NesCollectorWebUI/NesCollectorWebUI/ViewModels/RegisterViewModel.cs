@@ -10,13 +10,15 @@ namespace NesCollectorWebUI.ViewModels
 {
     public class RegisterViewModel
     {
-        [EmailAddress, Required]
+
+        [Required, EmailAddress, Display(Prompt = "Email Address")]
         public string Email { get; set; }
-        [DataType(DataType.Password), Required]
+        [DataType(DataType.Password), Required, Display(Prompt = "Password")]
         public string Password { get; set; }
-        [DataType(DataType.Password),Compare("Password", ErrorMessage = "Your passwords don't match!"), Required]
+        [DataType(DataType.Password),Compare("Password", ErrorMessage = "Your passwords don't match!"), Required, Display(Prompt = "Confirm Password")]
         public string ConfirmPassword { get; set; }
-        public string RoleId { get; set; }
+        [Required, Display(Name = "Select a Role")]
+        public string Role { get; set; }
         public SelectList Roles { get; set; }
     }
 }
