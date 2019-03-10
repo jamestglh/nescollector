@@ -35,4 +35,8 @@
     <ProjectReference Include="..\NesCollector.Service\NesCollector.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\games\" />
+  </ItemGroup>
+
 </Project>

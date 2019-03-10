@@ -21,8 +21,7 @@ namespace NesCollectorWebUI.Controllers
 
         public IActionResult Index()
         {
-            var game = _gameService.GetById(345);
-            return View(game);
+            return View();
         }
 
         public IActionResult About()

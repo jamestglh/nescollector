@@ -71,7 +71,14 @@ namespace NesCollectorWebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult LogIn() => View();
+        public IActionResult LogIn()
+        {
+            if (User != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> LogIn(LogInViewModel vm)
