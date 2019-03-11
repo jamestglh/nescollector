@@ -17,14 +17,17 @@ namespace NesCollectorWebUI.Controllers
         private readonly IUserGameService _userGameService;
         private readonly IWishlistService _wishlistService;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IGameService _gameService;
 
         public UserController(IUserGameService userGameService, 
-            IWishlistService wishlistService, 
+            IWishlistService wishlistService,
+            IGameService gameService,
             UserManager<AppUser> userManager)
         {
             _userGameService = userGameService;
             _wishlistService = wishlistService;
             _userManager = userManager;
+            _gameService = gameService;
         }
 
         public IActionResult Index()
@@ -34,8 +37,10 @@ namespace NesCollectorWebUI.Controllers
 
         public IActionResult ListUserGames(UserCollectionViewModel vm)
         {
-            //var userId = _userManager.GetUserId(User);
-            //var userGames = _userGameService.GetUserGamesByUserId(userId);
+            var games = _gameService.GetByGameConsoleId(1);
+            vm.Games = games;
+            var userId = _userManager.GetUserId(User);
+            vm.UserGames = _userGameService.GetUserGamesByUserId(userId);
 
             return View(vm);
         }
