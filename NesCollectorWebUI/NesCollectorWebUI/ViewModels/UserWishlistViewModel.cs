@@ -10,5 +10,6 @@ namespace NesCollectorWebUI.ViewModels
     {
         public AppUser User { get; set; }
         public ICollection<Wishlist> UserWishlist { get; set; }
+        public ICollection<Game> Games { get; set; }
     }
 }

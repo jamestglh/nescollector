@@ -15,8 +15,8 @@
         <label id="confirmPassword" class="sr-only" asp-for="ConfirmPassword"></label>
         <input class="form-control" asp-for="ConfirmPassword" />
     
-        <label asp-for="Role"></label>
-        <select asp-for="Role" asp-items="@Model.Roles"></select>
+        @*<label asp-for="Role"></label>
+        <select asp-for="Role" asp-items="@Model.Roles"></select>*@
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
     </form>

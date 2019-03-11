@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NesCollector.Models;
 using NesCollector.Service.Services;
+using NesCollectorWebUI.ViewModels;
 
 namespace NesCollectorWebUI.Controllers
 {
@@ -31,12 +32,12 @@ namespace NesCollectorWebUI.Controllers
             return View();
         }
 
-        public IActionResult ListUserGames()
+        public IActionResult ListUserGames(UserCollectionViewModel vm)
         {
-            var userId = _userManager.GetUserId(User);
-            var userGames = _userGameService.GetUserGamesByUserId(userId);
+            //var userId = _userManager.GetUserId(User);
+            //var userGames = _userGameService.GetUserGamesByUserId(userId);
 
-            return View(userGames);
+            return View(vm);
         }
     }
 }

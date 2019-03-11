@@ -46,7 +46,6 @@ namespace NesCollectorWebUI.Controllers
                 {
                     Email = vm.Email,
                     UserName = vm.Email
-
                 };
                 var result = await _userManager.CreateAsync(newUser, vm.Password);
 
