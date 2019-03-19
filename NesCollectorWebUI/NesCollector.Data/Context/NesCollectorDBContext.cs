@@ -26,7 +26,7 @@ namespace NesCollector.Data.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
             //bad way of providing connection string
-            optionBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=nescollector;Trusted_Connection=True");
+            optionBuilder.UseSqlServer(Environment.GetEnvironmentVariable("SQLCONNSTR_NESCOLLECTOR_DB"));
             optionBuilder.EnableSensitiveDataLogging(true);
         }
 
@@ -53,44 +53,46 @@ namespace NesCollector.Data.Context
                 new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" }
                 );
 
-            using (var reader = new StreamReader(@"..\NesCollector.Data\SeedData\nesmasterlist.csv"))
-            using (var csv = new CsvReader(reader, new CsvHelper.Configuration.Configuration { HeaderValidated = null, MissingFieldFound = null }))
-            {
-                IEnumerable<Game> games = csv.GetRecords<Game>();
+            //using (var reader = new StreamReader(@"..\NesCollector.Data\SeedData\nesmasterlist.csv"))
+            //using (var csv = new CsvReader(reader, new CsvHelper.Configuration.Configuration { HeaderValidated = null, MissingFieldFound = null }))
+            //{
+            //    IEnumerable<Game> games = csv.GetRecords<Game>();
 
 
-                foreach (var Game in games)
-                {
-                    var id = csv.GetField<int>("Id");
-                    var apiGameId = csv.GetField<int>("ApiGameId");
-                    var systemId = csv.GetField<string>("SystemId");
-                    var title = csv.GetField<string>("Title");
-                    var genre = csv.GetField<string>("Genre");
-                    var coverUrl = csv.GetField<string>("CoverURL");
-                    var upc = csv.GetField<string>("Upc");
-                    var loosePrice = csv.GetField<double>("LoosePrice");
-                    var cibPrice = csv.GetField<double>("CibPrice");
-                    var gameConsoleId = csv.GetField<int>("GameConsoleId");
+            //    foreach (var Game in games)
+            //    {
+            //        var id = csv.GetField<int>("Id");
+            //        var apiGameId = csv.GetField<int>("ApiGameId");
+            //        var systemId = csv.GetField<string>("SystemId");
+            //        var title = csv.GetField<string>("Title");
+            //        var genre = csv.GetField<string>("Genre");
+            //        var coverUrl = csv.GetField<string>("CoverURL");
+            //        var upc = csv.GetField<string>("Upc");
+            //        var loosePrice = csv.GetField<double>("LoosePrice");
+            //        var cibPrice = csv.GetField<double>("CibPrice");
+            //        var gameConsoleId = csv.GetField<int>("GameConsoleId");
+            //        var releaseDate = csv.GetField<string>("ReleaseDate");
 
 
 
-                    modelBuilder.Entity<Game>().HasData(
-                    new Game
-                    {
-                        Id = id,
-                        ApiGameId = apiGameId,
-                        SystemId = systemId,
-                        Title = title,
-                        Genre = genre,
-                        CoverURL = coverUrl,
-                        Upc = upc,
-                        LoosePrice =  loosePrice,
-                        CibPrice = cibPrice,
-                        GameConsoleId = gameConsoleId,
-                    })
-                    ;
-                }
-            }
+            //        modelBuilder.Entity<Game>().HasData(
+            //        new Game
+            //        {
+            //            Id = id,
+            //            ApiGameId = apiGameId,
+            //            SystemId = systemId,
+            //            Title = title,
+            //            Genre = genre,
+            //            CoverURL = coverUrl,
+            //            Upc = upc,
+            //            LoosePrice = loosePrice,
+            //            CibPrice = cibPrice,
+            //            GameConsoleId = gameConsoleId,
+            //            ReleaseDate = releaseDate
+            //        })
+            //        ;
+            //    }
+            //}
         }
     }
 }

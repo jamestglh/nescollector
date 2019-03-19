@@ -1,0 +1,22 @@
+﻿@model IEnumerable<AppUser>
+
+
+<h2>List All Users</h2>
+
+ 
+
+<table class="table table-dark">
+    <tr>
+        <th>Email</th>
+        <th>Role</th>
+    </tr>
+    @foreach (var u in Model)
+    {
+            <tr>
+                <td>@u.Email</td>
+            </tr>
+        }
+    
+
+
+</table>

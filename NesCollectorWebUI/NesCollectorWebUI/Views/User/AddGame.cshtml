@@ -1,0 +1,30 @@
+﻿@model UserCollectionViewModel
+
+
+<form asp-action="addGame" method="post" enctype="multipart/form-data">
+    <input list="brow" asp-for="@Model.Game.Title">
+    <div class="form-group">
+        <datalist id="brow">
+            @foreach (var g in Model.Games)
+            {
+                <option value="@g.Title" />
+            }
+        </datalist>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserGame.Condition">Notes about the game's condition, i.e. "torn label"</label>
+        <input class="form-control" asp-for="UserGame.Condition" />
+    </div>
+    <div class="form-group">
+        <label asp-for="UserGame.HasBox">Does it have the box?</label>
+        @Html.RadioButtonFor(x => x.UserGame.HasBox, true) Yes
+        @Html.RadioButtonFor(x => x.UserGame.HasBox, false) No
+    </div>
+    <div class="form-group">
+        <label asp-for="UserGame.HasManual">Does it have the manual?</label>
+        @Html.RadioButtonFor(x => x.UserGame.HasManual, true) Yes
+        @Html.RadioButtonFor(x => x.UserGame.HasManual, false) No
+    </div>
+    <button type="submit" class="btn btn-primary">Add Game</button>
+
+</form>

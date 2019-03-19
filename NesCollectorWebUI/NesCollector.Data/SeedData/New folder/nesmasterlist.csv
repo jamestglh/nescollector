@@ -1,4 +1,4 @@
-Id,ApiGameId,SystemId,Title,Genre,CoverURL,Upc,loose-price,cib-price,GameConsoleId,ReleaseDate
+Id,ApiGameId,SystemId,Title,Genre,CoverURL,Upc,loose-price,cib-price,GameConsoleId,release-date
 1,12168,NES,10-Yard Fight,Football,https://github.com/ramiabraham/cover-art-collection/blob/master/nes/10%20yard%20fight.jpg?raw=true,,$4.31,$21.23,1,1985-10-01
 2,37965,NES,10-Yard Fight [5 Screw],Football,https://github.com/ramiabraham/cover-art-collection/blob/master/nes/10%20Yard%20Fight.jpg?raw=true,,$3.74,$29.99,1,1985-10-01
 3,12169,NES,1942,Other,https://github.com/ramiabraham/cover-art-collection/blob/master/nes/1942.jpg?raw=true,,$10.29,$37.70,1,1986-11-01

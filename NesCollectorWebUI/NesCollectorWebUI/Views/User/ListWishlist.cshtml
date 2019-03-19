@@ -1,0 +1,49 @@
+﻿@model UserWishlistViewModel
+
+<h2>Your Wishlist</h2>
+
+<a class="btn btn-primary" asp-action="AddWishlist" role="button">Add a Game to your Wishlist</a>
+
+@if (Model.UserWishlist.Count == 0)
+{
+    <div class=" alert alert-secondary">
+        You don't have any games added to your wishlist yet!
+    </div>
+
+}
+else
+{
+    <table class="table table-dark">
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Max Price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Cover</th>
+
+
+        </tr>
+        @foreach (var w in Model.UserWishlist)
+        {
+            @foreach (var g in Model.Games)
+
+            {
+                if (w.GameId == g.Id)
+                {
+        <tr>
+            <td>@g.Title</td>
+            <td>@g.Genre</td>
+            <td>$@w.MaxPrice</td>
+            <td><a asp-action="Edit" asp-route-id="@w.Id">Edit</a></td>
+            <td><a asp-action="DeleteWishlist" asp-route-id="@w.Id">Delete</a></td>
+            <td>
+                <img class="game-cover" src="@g.CoverURL" alt="Cover Art" />
+            </td>
+        </tr>
+                }
+            }
+        }
+
+    </table>
+}

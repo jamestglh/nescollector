@@ -46,6 +46,13 @@ namespace NesCollector.Data.Implementation.EFCore
             }
         }
 
+        public ICollection<AppUser> GetAllUsers()
+        {
+            using (var db = new NesCollectorDBContext())
+            {
+                    return db.Users.ToList();
+            }
+        }
         public ICollection<AppUser> GetUsersByUserGameId(int userGameId)
         {
             using (var db = new NesCollectorDBContext())

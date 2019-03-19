@@ -3,7 +3,7 @@
 
 <h2>List Collection</h2>
 
-<a class="btn btn-primary" asp-action="create" role="button">Add a Game to your Collection</a>
+<a class="btn btn-primary" asp-action="AddGame" role="button">Add a Game to your Collection</a>
 
 @if (Model.UserGames.Count == 0)
 {
@@ -14,35 +14,45 @@
 }
 else
 {
-    <table class="table table-dark">
+    <table class="table table-dark" >
         <tr>
             <th>Title</th>
             <th>Genre</th>
+            <th>Includes Box?</th>
+            <th>Includes Manual?</th>
             <th>Value</th>
+            <th>Edit</th>
+            <th>Delete</th>
             <th>Cover</th>
+
+
         </tr>
         @foreach (var u in Model.UserGames)
         {
             @foreach (var g in Model.Games)
 
             {
-                if (u.Id == g.Id)
+                if (u.GameId == g.Id)
                 {
-                    <tr>
-                        <td>@g.Title</td>
-                        <td>@g.Genre</td>
+        <tr>
+            <td>@g.Title</td>
+            <td>@g.Genre</td>
+            <td>@u.HasBox</td>
+            <td>@u.HasManual</td>
+            <td>$@u.Value.ToString("f2")</td>
 
-                        @if (u.HasBox && u.HasManual){<td>@g.CibPrice</td>}
-                        else{<td>@g.LoosePrice</td>}
+            <td><a asp-action="Edit" asp-route-id="@u.Id">Edit</a></td>
+            <td><a asp-action="Delete" asp-route-id="@u.Id">Delete</a></td>
 
-                        <td>
-                            <img src="@g.CoverURL" alt="Cover Art" />
-                        </td>
-                    </tr>
+
+            <td>
+                <img class="game-cover" src="@g.CoverURL" alt="Cover Art" />
+            </td>
+
+        </tr>
                 }
             }
         }
-
 
     </table>
 }

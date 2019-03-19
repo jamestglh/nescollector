@@ -66,13 +66,12 @@ namespace NesCollectorWebUI.Controllers
             }
             vm.Roles = new SelectList(_roles);
             return View(vm);
-            
         }
 
         [HttpGet]
         public IActionResult LogIn()
         {
-            //if (User != null)
+            //if (User.Identity.IsAuthenticated)
             //{
             //    return RedirectToAction("Index", "Home");
             //}

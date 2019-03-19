@@ -15,6 +15,7 @@ namespace NesCollector.Models
         public string Upc { get; set; }
         public double LoosePrice { get; set; }
         public double CibPrice { get; set; }
+        //public string ReleaseDate { get; set; }
 
         //foreign key
         public int GameConsoleId { get; set; }

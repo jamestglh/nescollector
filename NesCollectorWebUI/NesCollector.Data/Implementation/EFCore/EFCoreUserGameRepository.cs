@@ -71,7 +71,14 @@ namespace NesCollector.Data.Implementation.EFCore
             using (var db = new NesCollectorDBContext())
             {
                 var existingUserGame = GetById(updatedUserGame.Id);
+
+                //existingUserGame.Condition = updatedUserGame.Condition;
+                //existingUserGame.HasBox = updatedUserGame.HasBox;
+                //existingUserGame.HasManual = updatedUserGame.HasManual;
+
                 db.Entry(existingUserGame).CurrentValues.SetValues(updatedUserGame);
+                //existingUserGame = updatedUserGame;
+
                 db.SaveChanges();
 
                 return existingUserGame;

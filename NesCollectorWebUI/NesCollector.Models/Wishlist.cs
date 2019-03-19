@@ -17,6 +17,6 @@ namespace NesCollector.Models
         public AppUser User { get; set; } //navigation reference
         public int GameId { get; set; }
         public Game Game { get; set; } //navigation reference
-
+        
     }
 }

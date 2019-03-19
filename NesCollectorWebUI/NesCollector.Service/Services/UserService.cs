@@ -14,6 +14,7 @@ namespace NesCollector.Service.Services
         AppUser GetById(string userId);
         ICollection<AppUser> GetUsersByUserGameId(int userGameId);
         ICollection<AppUser> GetUsersByWishlistId(int wishlistId);
+        ICollection<AppUser> GetAllUsers();
 
         //Create 
         AppUser Create(AppUser newUser);
@@ -46,6 +47,11 @@ namespace NesCollector.Service.Services
         public AppUser GetById(string userId)
         {
             return _userRepository.GetById(userId);
+        }
+
+        public ICollection<AppUser> GetAllUsers()
+        {
+            return _userRepository.GetAllUsers();
         }
 
         public ICollection<AppUser> GetUsersByUserGameId(int userGameId)

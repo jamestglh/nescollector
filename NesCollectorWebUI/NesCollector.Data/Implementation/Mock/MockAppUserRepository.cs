@@ -30,6 +30,16 @@ namespace NesCollector.Data.Implementation.Mock
             return Users.Single(u => u.Id == userId);
         }
 
+        public ICollection<AppUser> GetAllUsers()
+        {
+            var results = new List<AppUser>();
+            foreach (var u in Users)
+            {
+                results.Add(u);
+            }
+            return results;
+        }
+
         public ICollection<AppUser> GetUsersByUserGameId(int userGameId) // returns a list of  users that owns a particular game
         {
 

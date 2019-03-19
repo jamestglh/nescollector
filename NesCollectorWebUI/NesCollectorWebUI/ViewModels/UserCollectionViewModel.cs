@@ -8,9 +8,10 @@ namespace NesCollectorWebUI.ViewModels
 {
     public class UserCollectionViewModel
     {
-       
-         public ICollection<UserGame> UserGames { get; set; }
-         public ICollection<Game> Games { get; set; }
+        public Game Game { get; set; }
+        public UserGame UserGame { get; set; }
+        public ICollection<Game> Games { get; set; }
+        public ICollection<UserGame> UserGames { get; set; }
 
     }
 }

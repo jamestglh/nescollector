@@ -18,7 +18,7 @@ namespace NesCollectorWebUI.Controllers
     {
         private readonly IUserGameService _userGameService;
         private readonly IWishlistService _wishlistService;
-        private readonly IGameService _GameService;
+        private readonly IGameService _gameService;
         private readonly IUserService _userService;
         private readonly IHostingEnvironment _environment;
 
@@ -30,7 +30,7 @@ namespace NesCollectorWebUI.Controllers
         {
             _userGameService = userGameService;
             _wishlistService = wishlistService;
-            _GameService = gameService;
+            _gameService = gameService;
             _userService = userService;
             _environment = environment;
         }
@@ -42,7 +42,7 @@ namespace NesCollectorWebUI.Controllers
 
         public IActionResult ListAllGames()
         {
-            var games = _GameService.GetByGameConsoleId(1);
+            var games = _gameService.GetByGameConsoleId(1);
             return View(games);
         }
 
@@ -57,14 +57,11 @@ namespace NesCollectorWebUI.Controllers
             Game newGame = vm.Game;
             IFormFile image = vm.Image;
             
-
             //upload image
-
             if (image != null && image.Length > 0)
             {
                 string storageFolder = Path.Combine(_environment.WebRootPath, "img/games");
                 string newImageName = $"{Guid.NewGuid().ToString()}{Path.GetExtension(image.FileName)}"; // gives the image name a guid and puts the extension on the end
-
 
                 string fullPath = Path.Combine(storageFolder, newImageName); // builds path to image, goes to stream
 
@@ -79,9 +76,15 @@ namespace NesCollectorWebUI.Controllers
             }
             
             //save newGame
-            _GameService.Create(newGame);
+            _gameService.Create(newGame);
 
             return RedirectToAction("ListAllGames");
+        }
+
+        public IActionResult ListAllUsers()
+        {
+            var users = _userService.GetAllUsers();
+            return View(users);
         }
     }
 }

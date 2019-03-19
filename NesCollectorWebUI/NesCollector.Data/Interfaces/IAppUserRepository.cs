@@ -11,6 +11,7 @@ namespace NesCollector.Data.Interfaces
         AppUser GetById(string userId);
         ICollection<AppUser> GetUsersByUserGameId(int userGameId);
         ICollection<AppUser> GetUsersByWishlistId(int wishlistId);
+        ICollection<AppUser> GetAllUsers();
 
         //Create 
         AppUser Create(AppUser newUser);

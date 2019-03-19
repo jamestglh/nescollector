@@ -17,16 +17,18 @@
     </tr>
     @foreach (var g in Model)
     {
-
+        if (g.Genre != "Systems" && g.Genre != "Controllers" && g.Genre != "Accessories")
+        {
         <tr>
             <td>@g.Title</td>
             <td>@g.Genre</td>
-            <td>$@g.LoosePrice</td>
-            <td>$@g.CibPrice</td>
+            <td>$@g.LoosePrice.ToString("f2")</td>
+            <td>$@g.CibPrice.ToString("f2")</td>
             <td>
                 <img class="game-cover"src="@g.CoverURL" alt="Cover Art" />
             </td>
         </tr>
+        }
     }
 
 

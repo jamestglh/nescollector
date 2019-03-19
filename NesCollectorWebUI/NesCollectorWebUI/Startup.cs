@@ -54,7 +54,7 @@ namespace NesCollectorWebUI
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            EnableScheduledTaskOnStartup(services);
+            EnableScheduledTaskOnStartup(services); // this is my scheduled task that pulls the current values of the NES games from the pricecharting API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
