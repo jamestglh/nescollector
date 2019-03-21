@@ -86,5 +86,17 @@ namespace NesCollectorWebUI.Controllers
             var users = _userService.GetAllUsers();
             return View(users);
         }
+
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditGameViewModel vm)
+        {
+            return View(vm);
+        }
     }
 }

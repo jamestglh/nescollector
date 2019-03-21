@@ -70,11 +70,31 @@ namespace NesCollector.Data.Implementation.EFCore
         {
             using (var db = new NesCollectorDBContext())
             {
-                var existingWishlist = GetById(updatedWishlist.Id);
-                db.Entry(existingWishlist).CurrentValues.SetValues(updatedWishlist);
-                db.SaveChanges();
+                var entry = db.Entry(updatedWishlist);
+                entry.Property(w => w.MaxPrice).IsModified = true;
 
-                return existingWishlist;
+                db.SaveChanges();
+                return updatedWishlist;
+
+                //var existingWishlist = GetById(updatedWishlist.Id);
+                //db.Entry(existingWishlist).CurrentValues.SetValues(updatedWishlist);
+                //db.SaveChanges();
+
+                //return existingWishlist;
+            }
+        }
+
+        public UserGame Update(UserGame updatedUserGame)
+        {
+            using (var db = new NesCollectorDBContext())
+            {
+                var entry = db.Entry(updatedUserGame);
+                entry.Property(w => w.HasBox).IsModified = true;
+                entry.Property(w => w.HasManual).IsModified = true;
+                entry.Property(w => w.Condition).IsModified = true;
+
+                db.SaveChanges();
+                return updatedUserGame;
             }
         }
     }

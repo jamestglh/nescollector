@@ -2,7 +2,9 @@
 
 
 <form asp-action="addGame" method="post" enctype="multipart/form-data">
+    <div>Choose a Game / Search from the dropdown menu</div>
     <input list="brow" asp-for="@Model.Game.Title">
+
     <div class="form-group">
         <datalist id="brow">
             @foreach (var g in Model.Games)

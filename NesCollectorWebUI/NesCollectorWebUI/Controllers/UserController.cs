@@ -181,30 +181,114 @@ namespace NesCollectorWebUI.Controllers
             return View(vm);
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(int id, UserCollectionViewModel vm)
+        //{
+        //    UserGame userGameToEdit = _userGameService.GetById(id);
+        //    UserGame ugFromVm = vm.UserGame;
+        //    ugFromVm.GameId = userGameToEdit.GameId;
+        //    ugFromVm.UserId = userGameToEdit.UserId;
+        //    vm.Game = _gameService.GetById(userGameToEdit.GameId);
+        //    vm.Games = _gameService.GetByGameConsoleId(1);
+            
+
+        //    foreach (Game g in vm.Games)
+        //    {
+        //        if (vm.Game.Title == g.Title)
+        //        {
+        //            vm.Game = g;
+        //            ugFromVm.GameId = vm.Game.Id;
+        //        }
+        //    }
+
+        //    if (ugFromVm.HasBox && ugFromVm.HasManual)
+        //    {
+        //        ugFromVm.Value = vm.Game.CibPrice;
+        //    }
+        //    else
+        //    {
+        //        ugFromVm.Value = vm.Game.LoosePrice;
+        //    }
+        //    _userGameService.Create(ugFromVm);
+
+        //    try
+        //    {
+        //        _userGameService.DeleteById(id);
+        //        return RedirectToAction("ListUserGames");
+        //    }
+        //    catch
+        //    {
+        //        return RedirectToAction("ListUserGames");
+        //    }
+        //}
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, UserCollectionViewModel vm)
         {
-            vm.UserGame.Id = id;
-            //UserGame userGameToEdit = vm.UserGame;
+            UserGame userGameToEdit = _userGameService.GetById(id);
+            UserGame ugFromVm = vm.UserGame;
+            ugFromVm.GameId = userGameToEdit.GameId;
+            ugFromVm.UserId = userGameToEdit.UserId;
+            ugFromVm.Id = userGameToEdit.Id;
+            vm.Game = _gameService.GetById(userGameToEdit.GameId);
+            vm.Games = _gameService.GetByGameConsoleId(1);
 
-            //UserGame userGameToEdit = _userGameService.GetById(id);
-
+            foreach (Game g in vm.Games)
+            {
+                if (vm.Game.Title == g.Title)
+                {
+                    vm.Game = g;
+                    ugFromVm.GameId = vm.Game.Id;
+                }
+            }
+            if (ugFromVm.HasBox && ugFromVm.HasManual)
+            {
+                ugFromVm.Value = vm.Game.CibPrice;
+            }
+            else
+            {
+                ugFromVm.Value = vm.Game.LoosePrice;
+            }
             try
             {
-                _userGameService.Update(vm.UserGame);
-
-                //userGameToEdit.Condition = vm.UserGame.Condition;
-                //userGameToEdit.HasBox = vm.UserGame.HasBox;
-                //userGameToEdit.HasManual = vm.UserGame.HasManual;
-                //_userGameService.Update(userGameToEdit);
-
-
+                _userGameService.Update(ugFromVm);
                 return RedirectToAction("ListUserGames");
             }
             catch
             {
-                return RedirectToAction("Edit");
+                return RedirectToAction("ListUserGames");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult EditWishlist(int id)
+        {
+            UserWishlistViewModel vm = new UserWishlistViewModel();
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditWishlist(int id, UserWishlistViewModel vm)
+        {
+            Wishlist wishlistToEdit = _wishlistService.GetById(id);
+            Wishlist wishlistFromVm = vm.Wishlist;
+            wishlistFromVm.GameId = wishlistToEdit.GameId;
+            wishlistFromVm.UserId = wishlistToEdit.UserId;
+            wishlistFromVm.Id = wishlistToEdit.Id;
+            vm.Game = _gameService.GetById(wishlistToEdit.GameId);
+            vm.Games = _gameService.GetByGameConsoleId(1);
+
+            try
+            {
+                _wishlistService.Update(wishlistFromVm);
+                return RedirectToAction("ListWishlist");
+            }
+            catch
+            {
+                return RedirectToAction("ListWishlist");
             }
         }
     }

@@ -27,8 +27,14 @@ namespace NesCollectorWebUI.Controllers
 
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Register(string returnUrl)
         {
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.ReturnUrl = returnUrl ?? Url.Action("Index", "Dashboard");
             //need to populate roles before rendering view, if you want ppl to choose roles
             var vm = new RegisterViewModel
             {
@@ -69,12 +75,14 @@ namespace NesCollectorWebUI.Controllers
         }
 
         [HttpGet]
-        public IActionResult LogIn()
+        public IActionResult LogIn(string returnUrl)
         {
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.ReturnUrl = returnUrl ?? Url.Action("Index", "Dashboard");
+            
             return View();
         }
 

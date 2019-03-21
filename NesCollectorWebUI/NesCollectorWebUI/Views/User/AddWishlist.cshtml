@@ -1,6 +1,7 @@
 ﻿@model UserWishlistViewModel
 
 <form asp-action="AddWishlist" method="post" enctype="multipart/form-data">
+    <div>Choose a Game / Search from the dropdown menu</div>
     <input list="brow" asp-for="@Model.Game.Title">
     <div class="form-group">
         <datalist id="brow">
@@ -11,7 +12,7 @@
         </datalist>
     </div>
 
-    <input type="number" asp-for="@Model.MaxPrice"   step="0.01">
+    <input type="number" asp-for="@Model.MaxPrice" step="0.01">
 
     <button type="submit" class="btn btn-primary">Add Game to Wishlist</button>
 

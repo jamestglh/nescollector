@@ -1,0 +1,16 @@
+﻿@model UserWishlistViewModel
+@{
+    ViewData["Title"] = "EditWishlist";
+}
+
+<h2>Edit Wishlist</h2>
+<form asp-action="editWishlist" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <input type="number" asp-for="Wishlist.MaxPrice" step="0.01">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Edit Game</button>
+
+</form>
+
+

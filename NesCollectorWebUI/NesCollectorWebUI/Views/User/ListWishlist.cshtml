@@ -35,7 +35,7 @@ else
             <td>@g.Title</td>
             <td>@g.Genre</td>
             <td>$@w.MaxPrice</td>
-            <td><a asp-action="Edit" asp-route-id="@w.Id">Edit</a></td>
+            <td><a asp-action="EditWishlist" asp-route-id="@w.Id">Edit</a></td>
             <td><a asp-action="DeleteWishlist" asp-route-id="@w.Id">Delete</a></td>
             <td>
                 <img class="game-cover" src="@g.CoverURL" alt="Cover Art" />
