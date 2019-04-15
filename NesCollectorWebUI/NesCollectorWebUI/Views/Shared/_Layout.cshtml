@@ -3,18 +3,24 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>NesCollector</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="~/css/Normalize.css">
     <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/8bit-wonder" type="text/css" />
+    <link rel="icon" href="~/img/icon/ico-line-nes-cartridge-512.png">
+    
 
 </head>
 <body>
     <div class="container-fluid">
+
         <partial name="_NavigationPartial" />
-        <div class="container">
+        <div class="big-container">
             @RenderBody()
+
+
         </div>
     </div>
 

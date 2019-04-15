@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\games\" />
+    <Folder Include="wwwroot\img\carousel_img\" />
   </ItemGroup>
 
 </Project>

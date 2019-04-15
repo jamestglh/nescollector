@@ -12,6 +12,7 @@ namespace NesCollectorWebUI.ViewModels
         public UserGame UserGame { get; set; }
         public ICollection<Game> Games { get; set; }
         public ICollection<UserGame> UserGames { get; set; }
+        public double TotalValue { get; set; }
 
     }
 }

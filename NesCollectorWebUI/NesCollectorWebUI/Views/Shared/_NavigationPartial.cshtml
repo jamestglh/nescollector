@@ -1,50 +1,52 @@
-﻿<ul class="nav">
+﻿<div class="nav" id="navwrapper">
+    <ul class="nav">
 
-    <li class="nav-item">
-        <a class="nav-link active" asp-action="Index" asp-controller="Home">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link active" asp-action="About" asp-controller="Home">About</a>
-    </li>
-
-
-
-    @if (!User.Identity.IsAuthenticated)
-    {
-        @* Anonymous *@
         <li class="nav-item">
-            <a class="nav-link active" asp-action="Register" asp-controller="Account">Register</a>
+            <a class="nav-link active" asp-action="Index" asp-controller="Home">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" asp-action="LogIn" asp-controller="Account">Log In</a>
+            <a class="nav-link active" asp-action="About" asp-controller="Home">About</a>
         </li>
-    }
 
-    else
-    {
-        if (User.IsInRole("Admin"))
+
+
+        @if (!User.Identity.IsAuthenticated)
         {
-            @* Admin *@
+            @* Anonymous *@
             <li class="nav-item">
-                <a class="nav-link active" asp-action="ListAllGames" asp-controller="admin">View / Edit Master Game List</a>
+                <a class="nav-link active" asp-action="Register" asp-controller="Account">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" asp-action="ListAllUsers" asp-controller="admin">View / Edit Users</a>
+                <a class="nav-link active" asp-action="LogIn" asp-controller="Account">Log In</a>
             </li>
         }
+
         else
         {
-            @* User *@
+            if (User.IsInRole("Admin"))
+            {
+                @* Admin *@
+                <li class="nav-item">
+                    <a class="nav-link active" asp-action="ListAllGames" asp-controller="admin">View / Edit Master Game List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" asp-action="ListAllUsers" asp-controller="admin">View / Edit Users</a>
+                </li>
+            }
+            else
+            {
+                @* User *@
+                <li class="nav-item">
+                    <a class="nav-link active" asp-action="ListUserGames" asp-controller="user">View / Edit Your Collection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" asp-action="ListWishlist" asp-controller="user">View / Edit Your Wishlist</a>
+                </li>
+            }
+
             <li class="nav-item">
-                <a class="nav-link active" asp-action="ListUserGames" asp-controller="user">View / Edit Your Collection</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" asp-action="ListWishlist" asp-controller="user">View / Edit Your Wishlist</a>
+                <a class="nav-link active" asp-action="LogOut" asp-controller="Account">Log Out</a>
             </li>
         }
-
-        <li class="nav-item">
-            <a class="nav-link active" asp-action="LogOut" asp-controller="Account">Log Out</a>
-        </li>
-    }
-</ul>
+    </ul>
+</div>

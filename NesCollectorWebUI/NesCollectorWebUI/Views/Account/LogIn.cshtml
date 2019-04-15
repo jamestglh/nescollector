@@ -1,8 +1,9 @@
 ﻿@model LogInViewModel
 
-<div class="text-center">
+<div class="form-wrapper">
+    <div class="text-center">
 
-        <h2 class="h3 mb-3 font-weight-normal">Log In</h2>
+        <h2 class="" id="logintitle">Log In</h2>
         <form class="form-signin" asp-action="LogIn" method="post">
             <div asp-validation-summary="All"></div>
             <label class="sr-only" asp-for="Email"></label>
@@ -22,4 +23,5 @@
 
         </form>
 
+    </div>
 </div>

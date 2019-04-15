@@ -98,5 +98,27 @@ namespace NesCollectorWebUI.Controllers
         {
             return View(vm);
         }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            Game gameToDelete = new Game();
+            return View(gameToDelete);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, Game gameToDelete)
+        {
+            try
+            {
+                _gameService.DeleteById(gameToDelete.Id);
+                return RedirectToAction("ListAllGames");
+            }
+            catch
+            {
+                return RedirectToAction("ListAllGames");
+            }
+        }
     }
 }

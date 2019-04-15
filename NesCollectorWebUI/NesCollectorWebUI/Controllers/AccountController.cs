@@ -106,7 +106,7 @@ namespace NesCollectorWebUI.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "User");
+                        return RedirectToAction("ListUserGames", "User");
                     }
                 }
                 else

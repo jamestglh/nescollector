@@ -1,6 +1,8 @@
 ﻿@model UserWishlistViewModel
 
-<h2>Your Wishlist</h2>
+<div class="site-headline">
+    <img src="~/img/siteimg/viewwishlist.jpg" alt="Headline" id="bigtitle">
+</div>
 
 <a class="btn btn-primary" asp-action="AddWishlist" role="button">Add a Game to your Wishlist</a>
 
@@ -13,37 +15,63 @@
 }
 else
 {
-    <table class="table table-dark">
-        <tr>
-            <th>Title</th>
-            <th>Genre</th>
-            <th>Max Price</th>
-            <th>Edit</th>
-            <th>Delete</th>
-            <th>Cover</th>
 
-
-        </tr>
+    <div class="row">
         @foreach (var w in Model.UserWishlist)
         {
             @foreach (var g in Model.Games)
-
             {
                 if (w.GameId == g.Id)
                 {
-        <tr>
-            <td>@g.Title</td>
-            <td>@g.Genre</td>
-            <td>$@w.MaxPrice</td>
-            <td><a asp-action="EditWishlist" asp-route-id="@w.Id">Edit</a></td>
-            <td><a asp-action="DeleteWishlist" asp-route-id="@w.Id">Delete</a></td>
-            <td>
-                <img class="game-cover" src="@g.CoverURL" alt="Cover Art" />
-            </td>
-        </tr>
+                    <div class="card">
+                        <img class="card-img-top" id="game-cover" src="@g.CoverURL" alt="Cover Art" />
+                        <div class="card-body">
+                            <h5 class="card-title">@g.Title</h5>
+                            <p class="card-text">Genre: @g.Genre</p>
+                            <p class="card-text">Max Price: @w.MaxPrice</p>
+                            <p class="card-text">Current Market Value (complete): $@g.CibPrice.ToString("f2")</p>
+                            <p class="card-text">Current Market Value (loose): $@g.LoosePrice.ToString("f2")</p>
+                            <a class="btn btn-primary" asp-action="EditWishlist" asp-route-id="@w.Id">Edit</a>
+                            <a class="btn btn-primary" asp-action="DeleteWishlist" asp-route-id="@w.Id">Delete</a>
+                        </div>
+                    </div>
                 }
             }
         }
+    </div>
 
-    </table>
+
+    @*<table class="table table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Max Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Cover</th>
+
+
+            </tr>
+            @foreach (var w in Model.UserWishlist)
+            {
+                @foreach (var g in Model.Games)
+
+                {
+                    if (w.GameId == g.Id)
+                    {
+                        <tr>
+                            <td>@g.Title</td>
+                            <td>@g.Genre</td>
+                            <td>$@w.MaxPrice</td>
+                            <td><a asp-action="EditWishlist" asp-route-id="@w.Id">Edit</a></td>
+                            <td><a asp-action="DeleteWishlist" asp-route-id="@w.Id">Delete</a></td>
+                            <td>
+                                <img class="game-cover" src="@g.CoverURL" alt="Cover Art" />
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+
+        </table>*@
 }

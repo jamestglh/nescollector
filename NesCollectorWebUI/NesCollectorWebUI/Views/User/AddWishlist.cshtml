@@ -1,19 +1,23 @@
 ﻿@model UserWishlistViewModel
 
-<form asp-action="AddWishlist" method="post" enctype="multipart/form-data">
-    <div>Choose a Game / Search from the dropdown menu</div>
-    <input list="brow" asp-for="@Model.Game.Title">
-    <div class="form-group">
-        <datalist id="brow">
-            @foreach (var g in Model.Games)
-            {
-                <option value="@g.Title" />
-            }
-        </datalist>
+    <div class="site-headline">
+        <img src="~/img/siteimg/addwishlist.jpg" alt="Headline" id="bigtitle">
     </div>
 
-    <input type="number" asp-for="@Model.MaxPrice" step="0.01">
+    <form asp-action="AddWishlist" method="post" enctype="multipart/form-data">
+        <div>Choose a Game / Search from the dropdown menu</div>
+        <input list="brow" asp-for="@Model.Game.Title">
+        <div class="form-group">
+            <datalist id="brow">
+                @foreach (var g in Model.Games)
+                {
+                    <option value="@g.Title" />
+                }
+            </datalist>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Add Game to Wishlist</button>
+        <input type="number" asp-for="@Model.MaxPrice" step="0.01">
 
-</form>
+        <button type="submit" class="btn btn-primary">Add Game to Wishlist</button>
+
+    </form>

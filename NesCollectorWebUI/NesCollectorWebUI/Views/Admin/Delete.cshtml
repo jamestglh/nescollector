@@ -1,0 +1,19 @@
+﻿@model Game
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete from Master List</h2>
+
+<h3>Are you sure you want to delete this from the Master List? WARNING: THERE IS NO TURNING BACK</h3>
+<div>
+
+
+    <form asp-action="Delete">
+        <input type="submit" asp-action="Delete" value="Delete" class="btn btn-default" /> |
+        <a asp-action="ListUserGames">Back to Master List</a>
+    </form>
+
+
+</div>

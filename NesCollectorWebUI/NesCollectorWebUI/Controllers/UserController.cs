@@ -41,6 +41,10 @@ namespace NesCollectorWebUI.Controllers
             vm.Games = games;
             var userId = _userManager.GetUserId(User);
             vm.UserGames = _userGameService.GetUserGamesByUserId(userId);
+            foreach (UserGame u in vm.UserGames)
+            {
+                vm.TotalValue = vm.TotalValue + u.Value;
+            }
 
             return View(vm);
         }

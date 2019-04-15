@@ -1,0 +1,36 @@
+﻿body {
+    background-color: black;
+}
+
+html {
+    background: #ffe;
+    text-align: center;
+}
+
+.skewed {
+    display: inline-block;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: Helvetica;
+    font-weight: 700;
+    -webkit-transform: rotate(-10deg) skew(-10deg, 0);
+    -moz-transform: rotate(-10deg) skew(-10deg, 0);
+    -ms-transform: rotate(-10deg) skew(-10deg, 0);
+    -o-transform: rotate(-10deg) skew(-10deg, 0);
+    transform: rotate(-10deg) skew(-10deg, 0);
+}
+
+.site-headline {
+    text-align: center;
+    color: #db4527;
+    /*width: 80%;*/
+
+    #bigtitle {
+        width: 100%;
+    }
+
+    #subtitle {
+        font-size: 32px;
+        color: #D6B41F;
+    }
+}
+
