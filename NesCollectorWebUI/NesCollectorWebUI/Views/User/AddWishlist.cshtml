@@ -1,9 +1,9 @@
 ﻿@model UserWishlistViewModel
 
-    <div class="site-headline">
-        <img src="~/img/siteimg/addwishlist.jpg" alt="Headline" id="bigtitle">
-    </div>
-
+<div class="site-headline">
+    <img src="~/img/siteimg/addwishlist.jpg" alt="Headline" id="bigtitle">
+</div>
+<div class="addeditform">
     <form asp-action="AddWishlist" method="post" enctype="multipart/form-data">
         <div>Choose a Game / Search from the dropdown menu</div>
         <input list="brow" asp-for="@Model.Game.Title">
@@ -15,9 +15,11 @@
                 }
             </datalist>
         </div>
-
-        <input type="number" asp-for="@Model.MaxPrice" step="0.01">
-
-        <button type="submit" class="btn btn-primary">Add Game to Wishlist</button>
+        <div class="form-group">
+            <div>What's the max price you're willing to pay for this game?</div>
+            <input type="number" asp-for="@Model.MaxPrice" step="0.01">
+        </div>
+            <button type="submit" id="cardbtn" class="btn btn-primary">Add Game to Wishlist</button>
 
     </form>
+</div> 

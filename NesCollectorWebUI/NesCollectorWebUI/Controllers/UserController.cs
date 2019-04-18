@@ -44,6 +44,15 @@ namespace NesCollectorWebUI.Controllers
             foreach (UserGame u in vm.UserGames)
             {
                 vm.TotalValue = vm.TotalValue + u.Value;
+
+                if (u.HasBox && u.HasManual)
+                {
+                    u.Value = _gameService.GetById(u.GameId).CibPrice;
+                }
+                else
+                {
+                    u.Value = _gameService.GetById(u.GameId).LoosePrice;
+                }
             }
 
             return View(vm);
@@ -87,14 +96,14 @@ namespace NesCollectorWebUI.Controllers
             }
             ug.UserId = _userManager.GetUserId(User);
 
-            if (ug.HasBox && ug.HasManual)
-            {
-                ug.Value = gameFromView.CibPrice;
-            }
-            else
-            {
-                ug.Value = gameFromView.LoosePrice;
-            }
+            //if (ug.HasBox && ug.HasManual)
+            //{
+            //    ug.Value = gameFromView.CibPrice;
+            //}
+            //else
+            //{
+            //    ug.Value = gameFromView.LoosePrice;
+            //}
 
             _userGameService.Create(ug);
             return RedirectToAction("ListUserGames");
@@ -185,48 +194,6 @@ namespace NesCollectorWebUI.Controllers
             return View(vm);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, UserCollectionViewModel vm)
-        //{
-        //    UserGame userGameToEdit = _userGameService.GetById(id);
-        //    UserGame ugFromVm = vm.UserGame;
-        //    ugFromVm.GameId = userGameToEdit.GameId;
-        //    ugFromVm.UserId = userGameToEdit.UserId;
-        //    vm.Game = _gameService.GetById(userGameToEdit.GameId);
-        //    vm.Games = _gameService.GetByGameConsoleId(1);
-            
-
-        //    foreach (Game g in vm.Games)
-        //    {
-        //        if (vm.Game.Title == g.Title)
-        //        {
-        //            vm.Game = g;
-        //            ugFromVm.GameId = vm.Game.Id;
-        //        }
-        //    }
-
-        //    if (ugFromVm.HasBox && ugFromVm.HasManual)
-        //    {
-        //        ugFromVm.Value = vm.Game.CibPrice;
-        //    }
-        //    else
-        //    {
-        //        ugFromVm.Value = vm.Game.LoosePrice;
-        //    }
-        //    _userGameService.Create(ugFromVm);
-
-        //    try
-        //    {
-        //        _userGameService.DeleteById(id);
-        //        return RedirectToAction("ListUserGames");
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction("ListUserGames");
-        //    }
-        //}
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, UserCollectionViewModel vm)
@@ -246,14 +213,6 @@ namespace NesCollectorWebUI.Controllers
                     vm.Game = g;
                     ugFromVm.GameId = vm.Game.Id;
                 }
-            }
-            if (ugFromVm.HasBox && ugFromVm.HasManual)
-            {
-                ugFromVm.Value = vm.Game.CibPrice;
-            }
-            else
-            {
-                ugFromVm.Value = vm.Game.LoosePrice;
             }
             try
             {
@@ -294,6 +253,12 @@ namespace NesCollectorWebUI.Controllers
             {
                 return RedirectToAction("ListWishlist");
             }
+        }
+
+        public IActionResult ListAllGames()
+        {
+            var games = _gameService.GetByGameConsoleId(1);
+            return View(games);
         }
     }
 }

@@ -1,24 +1,24 @@
 ﻿@model RegisterViewModel
+<div class="form-wrapper">
+    <div class="text-center">
 
-<div class="text-center">
+        <h2 class="h3 mb-3 font-weight-normal" id="logintitle">Register</h2>
 
-    <h2 class="h3 mb-3 font-weight-normal">Register</h2>
+        <form class="form-signin" asp-action="register" method="post">
+            <div asp-validation-summary="All"></div>
+            <label class="sr-only" asp-for="Email"></label>
+            <input class="form-control" asp-for="Email" />
 
-    <form class="form-signin" asp-action="register" method="post">
-        <div asp-validation-summary="All"></div>
-        <label class="sr-only" asp-for="Email"></label>
-        <input class="form-control" asp-for="Email" />
-        
-        <label class="sr-only" asp-for="Password"></label>
-        <input class="form-control" asp-for="Password" />
-  
-        <label id="confirmPassword" class="sr-only" asp-for="ConfirmPassword"></label>
-        <input class="form-control" asp-for="ConfirmPassword" />
-    
-        @*<label asp-for="Role"></label>
-        <select asp-for="Role" asp-items="@Model.Roles"></select>*@
+            <label class="sr-only" asp-for="Password"></label>
+            <input class="form-control" asp-for="Password" />
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-    </form>
-</div>
+            <label id="confirmPassword" class="sr-only" asp-for="ConfirmPassword"></label>
+            <input class="form-control" asp-for="ConfirmPassword" />
 
+            @*<label asp-for="Role"></label>
+                <select asp-for="Role" asp-items="@Model.Roles"></select>*@
+
+            <button class="btn btn-lg btn-primary btn-block" id="signupbtn" type="submit">Register</button>
+        </form>
+    </div>
+    </div>

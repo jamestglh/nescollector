@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Game>
+
+
+<div class="site-headline">
+    <img src="~/img/siteimg/masterlistuser.jpg" alt="Headline" id="bigtitle">
+</div>
+
+<div class="centeredbutton"><a class="btn btn-primary" asp-action="AddGame" id="signupbtn" button">Add a Game to your Collection</a>
+<a class="btn btn-primary" asp-action="AddWishlist" id="signupbtn" button">Add a Game to your Wishlist</a></div>
+
+<div class="card-container">
+    <div class="row">
+        @foreach (var g in Model)
+        {
+
+            <div class="card">
+                <img class="card-img-top" id="game-cover" src="@g.CoverURL" alt="Cover Art" />
+                <div class="card-body">
+                    <h5 class="card-title">@g.Title</h5>
+                    <p class="card-text">Genre: @g.Genre</p>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>

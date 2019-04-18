@@ -102,7 +102,7 @@ namespace NesCollectorWebUI.Controllers
                     //redirect to right controller based on role
                     if (isAdmin)
                     {
-                        return RedirectToAction("Index", "Admin");
+                        return RedirectToAction("ListAllGames", "Admin");
                     }
                     else
                     {
