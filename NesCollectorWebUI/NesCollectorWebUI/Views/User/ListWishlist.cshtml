@@ -29,7 +29,7 @@ else
                             <div class="card-body">
                                 <h5 class="card-title">@g.Title</h5>
                                 <p class="card-text">Genre: @g.Genre</p>
-                                <p class="card-text">Max Price you're willing to pay: $@w.MaxPrice</p>
+                                <p class="card-text">Max price you're willing to pay: $@w.MaxPrice</p>
                                 <p class="card-text">Current Market Value (complete): $@g.CibPrice.ToString("f2")</p>
                                 <p class="card-text">Current Market Value (loose): $@g.LoosePrice.ToString("f2")</p>
                                 <a class="btn btn-primary" asp-action="EditWishlist" id="cardbtn" asp-route-id="@w.Id">Edit</a>

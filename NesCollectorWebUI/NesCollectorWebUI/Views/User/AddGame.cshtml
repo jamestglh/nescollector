@@ -13,12 +13,17 @@
             <datalist id="brow">
                 @foreach (var g in Model.Games)
                 {
-                    <option value="@g.Title" />
+                    @if (!Model.GamesOwned.Contains(g.Id))
+                    {
+                        <option value="@g.Title" />
+                        //set default value as game id //
+                    }
+
                 }
             </datalist>
         </div>
         <div class="form-group">
-            <label asp-for="UserGame.Condition">Notes about the game's condition, i.e. "torn label"</label>
+            <label asp-for="UserGame.Condition">(Optional) Notes about the game's condition, i.e. "torn label"</label>
             <input class="form-control" asp-for="UserGame.Condition" />
         </div>
         <div class="form-group">

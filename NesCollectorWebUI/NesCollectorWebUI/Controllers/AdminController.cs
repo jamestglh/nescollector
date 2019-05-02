@@ -120,5 +120,27 @@ namespace NesCollectorWebUI.Controllers
                 return RedirectToAction("ListAllGames");
             }
         }
+
+        [HttpGet]
+        public ActionResult DeleteUser(string Id)
+        {
+            AppUser userToDelete = new AppUser();
+            return View(userToDelete);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteUser(string id, AppUser userToDelete)
+        {
+            try
+            {
+                _userService.DeleteById(userToDelete.Id);
+                return RedirectToAction("ListAllUsers");
+            }
+            catch
+            {
+                return RedirectToAction("ListAllUsers");
+            }
+        }
     }
 }

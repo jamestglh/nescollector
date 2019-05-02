@@ -5,6 +5,10 @@
     <UserSecretsId>f2551ba6-b193-4908-978a-efdfd0632f3a</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="wwwroot\images\**" />
     <Compile Remove="wwwroot\js\**" />

@@ -26,7 +26,8 @@ namespace NesCollector.Data.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
             //bad way of providing connection string
-            optionBuilder.UseSqlServer(Environment.GetEnvironmentVariable("SQLCONNSTR_NESCOLLECTOR_DB"));
+            //optionBuilder.UseSqlServer(Environment.GetEnvironmentVariable("SQLCONNSTR_NESCOLLECTOR_DB"));
+            optionBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=nescollector;Trusted_Connection=True");
             optionBuilder.EnableSensitiveDataLogging(true);
         }
 

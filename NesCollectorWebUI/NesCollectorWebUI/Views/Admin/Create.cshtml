@@ -1,25 +1,25 @@
-﻿@model  CreateGameViewModel
+﻿@model CreateGameViewModel
 @{
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<div class="addeditform">
+    <form asp-action="create" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Game.Title">Title</label>
+            <input class="form-control" asp-for="Game.Title" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Game.Genre">Genre</label>
+            <input class="form-control" asp-for="Game.Genre" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Image">Image</label>
+            <input type="file" accept=".jpg" class="form-control-file" asp-for="Image" />
+        </div>
 
-<form asp-action="create" method="post" enctype="multipart/form-data">
-<div class="form-group">
-    <label asp-for="Game.Title">Title</label>
-    <input class="form-control" asp-for="Game.Title" />
+        <button type="submit" id="signupbtn"  class="btn btn-primary">Create</button>
+
+    </form>
 </div>
-<div class="form-group">
-    <label asp-for="Game.Genre">Genre</label>
-    <input class="form-control" asp-for="Game.Genre" />
-</div>
-<div class="form-group">
-    <label asp-for="Image">Image</label>
-    <input type="file" accept=".jpg" class="form-control-file" asp-for="Image" />
-</div>
 
-<button type="submit" class="btn btn-primary">Create</button>
-
-
-</form>

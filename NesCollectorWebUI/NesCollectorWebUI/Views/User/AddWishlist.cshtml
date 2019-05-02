@@ -1,4 +1,4 @@
-﻿@model UserWishlistViewModel
+﻿@model UserCollectionViewModel
 
 <div class="site-headline">
     <img src="~/img/siteimg/addwishlist.jpg" alt="Headline" id="bigtitle">
@@ -11,8 +11,11 @@
             <datalist id="brow">
                 @foreach (var g in Model.Games)
                 {
-                    <option value="@g.Title" />
-                }
+                    @if (!Model.GamesOwned.Contains(g.Id))
+                    {
+                        <option value="@g.Title" />
+                    }
+                    }
             </datalist>
         </div>
         <div class="form-group">

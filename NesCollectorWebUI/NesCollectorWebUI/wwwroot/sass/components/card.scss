@@ -20,7 +20,28 @@
 
 #game-cover {
     width: 275px;
+
+    /*-webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: zoom-in;*/
 }
+
+
+/*#game-cover:hover,
+#game-cover:active,
+#game-cover:focus {
+ 
+    -ms-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -webkit-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+    position: relative;
+    z-index: 100;
+}*/
 
 #cardbtn {
     text-align: center;

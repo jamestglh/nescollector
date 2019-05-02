@@ -5,11 +5,12 @@
 <div class="addeditform">
     <h2>Edit Wishlist</h2>
     <form asp-action="editWishlist" method="post" enctype="multipart/form-data">
-        <div class="form-group">
+        <div class="form-group"> <p>Max price you're willing to pay:</p>
             <input type="number" asp-for="Wishlist.MaxPrice" step="0.01">
         </div>
 
         <button type="submit" id="cardbtn" class="btn btn-primary">Edit Game</button>
+        <a class="btn btn-primary" asp-action="DeleteWishlist" id="cardbtn">Delete</a>
 
     </form>
 </div>

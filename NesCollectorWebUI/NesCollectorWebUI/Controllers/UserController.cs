@@ -43,7 +43,7 @@ namespace NesCollectorWebUI.Controllers
             vm.UserGames = _userGameService.GetUserGamesByUserId(userId);
             foreach (UserGame u in vm.UserGames)
             {
-                vm.TotalValue = vm.TotalValue + u.Value;
+                
 
                 if (u.HasBox && u.HasManual)
                 {
@@ -53,6 +53,8 @@ namespace NesCollectorWebUI.Controllers
                 {
                     u.Value = _gameService.GetById(u.GameId).LoosePrice;
                 }
+                vm.TotalValue = vm.TotalValue + u.Value;
+
             }
 
             return View(vm);
@@ -74,7 +76,23 @@ namespace NesCollectorWebUI.Controllers
             UserCollectionViewModel vm = new UserCollectionViewModel();
             vm.Games = _gameService.GetByGameConsoleId(1);
             var userId = _userManager.GetUserId(User);
+            List<int> GamesOwned = new List<int>();
             vm.UserGames = _userGameService.GetUserGamesByUserId(userId);
+            var userGames = vm.UserGames;
+            vm.UserWishlist = _wishlistService.GetWishlistGamesByUserId(userId);
+            var userWishlist = vm.UserWishlist;
+
+
+            foreach (var u in userGames)
+            {
+                GamesOwned.Add(u.GameId);
+            }
+            foreach (var w in userWishlist)
+            {
+                GamesOwned.Add(w.GameId);
+            }
+            vm.GamesOwned = GamesOwned;
+
             return View(vm);
         }
 
@@ -96,15 +114,6 @@ namespace NesCollectorWebUI.Controllers
             }
             ug.UserId = _userManager.GetUserId(User);
 
-            //if (ug.HasBox && ug.HasManual)
-            //{
-            //    ug.Value = gameFromView.CibPrice;
-            //}
-            //else
-            //{
-            //    ug.Value = gameFromView.LoosePrice;
-            //}
-
             _userGameService.Create(ug);
             return RedirectToAction("ListUserGames");
         }
@@ -112,20 +121,39 @@ namespace NesCollectorWebUI.Controllers
         [HttpGet]
         public IActionResult AddWishlist()
         {
-            UserWishlistViewModel vm = new UserWishlistViewModel();
+            UserCollectionViewModel vm = new UserCollectionViewModel();
             vm.Games = _gameService.GetByGameConsoleId(1);
             var userId = _userManager.GetUserId(User);
             vm.UserWishlist = _wishlistService.GetWishlistGamesByUserId(userId);
+
+            List<int> GamesOwned = new List<int>();
+            vm.UserGames = _userGameService.GetUserGamesByUserId(userId);
+            var userGames = vm.UserGames;
+            vm.UserWishlist = _wishlistService.GetWishlistGamesByUserId(userId);
+            var userWishlist = vm.UserWishlist;
+
+
+            foreach (var u in userGames)
+            {
+                GamesOwned.Add(u.GameId);
+            }
+            foreach (var w in userWishlist)
+            {
+                GamesOwned.Add(w.GameId);
+            }
+            vm.GamesOwned = GamesOwned;
+
             return View(vm);
         }
 
         [HttpPost]
-        public IActionResult AddWishlist(UserWishlistViewModel vm)
+        public IActionResult AddWishlist(UserCollectionViewModel vm)
         {
             Game gameFromView = vm.Game;
             vm.Games = _gameService.GetByGameConsoleId(1);
             string gameFromViewTitle = vm.Game.Title;
             Wishlist wishlistGame = vm.Wishlist;
+
 
             foreach (Game g in vm.Games)
             {
@@ -255,10 +283,28 @@ namespace NesCollectorWebUI.Controllers
             }
         }
 
-        public IActionResult ListAllGames()
+        public IActionResult ListAllGames(UserCollectionViewModel vm)
         {
+            List<int> GamesOwned = new List<int>();
             var games = _gameService.GetByGameConsoleId(1);
-            return View(games);
+            vm.Games = games;
+            var userId = _userManager.GetUserId(User);
+            vm.UserGames = _userGameService.GetUserGamesByUserId(userId);
+            var userGames = vm.UserGames;
+            vm.UserWishlist = _wishlistService.GetWishlistGamesByUserId(userId);
+            var userWishlist = vm.UserWishlist;
+            
+
+            foreach (var u in userGames)
+            {
+                GamesOwned.Add(u.GameId);
+            }
+            foreach (var w in userWishlist)
+            {
+                GamesOwned.Add(w.GameId);
+            }
+            vm.GamesOwned = GamesOwned;
+            return View(vm);
         }
     }
 }

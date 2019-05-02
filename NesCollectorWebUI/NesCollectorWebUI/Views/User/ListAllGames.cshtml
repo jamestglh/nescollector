@@ -1,16 +1,17 @@
-﻿@model IEnumerable<Game>
-
+﻿@model UserCollectionViewModel
 
 <div class="site-headline">
     <img src="~/img/siteimg/masterlistuser.jpg" alt="Headline" id="bigtitle">
 </div>
 
-<div class="centeredbutton"><a class="btn btn-primary" asp-action="AddGame" id="signupbtn" button">Add a Game to your Collection</a>
-<a class="btn btn-primary" asp-action="AddWishlist" id="signupbtn" button">Add a Game to your Wishlist</a></div>
+<div class="centeredbutton">
+    <a class="btn btn-primary" asp-action="AddGame" id="signupbtn" button">Add a Game to your Collection</a>
+    <a class="btn btn-primary" asp-action="AddWishlist" id="signupbtn" button">Add a Game to your Wishlist</a>
+</div>
 
 <div class="card-container">
     <div class="row">
-        @foreach (var g in Model)
+        @foreach (var g in Model.Games)
         {
 
             <div class="card">
@@ -18,10 +19,32 @@
                 <div class="card-body">
                     <h5 class="card-title">@g.Title</h5>
                     <p class="card-text">Genre: @g.Genre</p>
+
+                    @foreach (var u in Model.UserGames)
+                    {
+                        if (u.GameId == g.Id)
+                        {
+                            <h5 class="card-title">This game is in your collection!</h5>
+                            <a class="btn btn-primary" asp-action="ListUserGames" id="signupbtn">View My Collection</a>
+                        }
+                    }
+                    @foreach (var w in Model.UserWishlist)
+                    {
+                        if (w.GameId == g.Id)
+                        {
+                            <h5 class="card-title">This game is on your Wishlist!</h5>
+                            <a class="btn btn-primary" asp-action="ListWishlist" id="cardbtn">View my Wishlist</a>
+ 
+                        }
+                    }
+
+                    @if (!Model.GamesOwned.Contains(g.Id))
+                    {
+                        <a class="btn btn-primary" asp-action="AddGame" id="signupbtn" asp-route-id="@g.Id">Add to Collection</a>
+                        <a class="btn btn-primary" asp-action="AddWishlist" id="signupbtn" asp-route-id="@g.Id">Add to Wishlist</a>
+                    }
                 </div>
             </div>
-
         }
-
     </div>
 </div>

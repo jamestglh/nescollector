@@ -8,13 +8,13 @@
 <table class="table table-dark">
     <tr>
         <th>Email</th>
-        <th>Role</th>
+        <th>Delete</th>
     </tr>
     @foreach (var u in Model)
     {
             <tr>
                 <td>@u.Email</td>
-               
+                <td><a class="btn btn-primary" asp-action="DeleteUser" id="signupbtn" asp-route-id="@u.Id">Delete</a></td>
             </tr>
         }
     
